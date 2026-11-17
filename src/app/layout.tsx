@@ -26,6 +26,14 @@ export const metadata: Metadata = {
     "Rondônia"
   ],
   authors: [{ name: "Wernnon Ruiz" }],
+  icons: {
+    icon: [
+
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/assets/images/welyz-signature-transparent.png",
+    apple: "/assets/images/welyz-signature-transparent.png",
+  },
 };
 
 export default function RootLayout({

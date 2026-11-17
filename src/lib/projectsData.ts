@@ -32,7 +32,7 @@ export const PROJECTS_DATA: ProjectCase[] = [
     subtitle: "Plataforma de Gestão Socioesportiva em Escala Municipal",
     category: "Governança Pública",
     clientOrScope: "Prefeitura Municipal de Porto Velho / SEMTEL",
-    period: "2024 - 2026",
+    period: "2025 - Atual",
     status: "Produção Ativa",
     summary:
       "Plataforma governamental corporativa desenvolvida para a Secretaria Municipal de Turismo, Esporte e Lazer (SEMTEL), gerindo o ciclo completo de iniciação socioesportiva, prevenção ativa da evasão e controle territorial em múltiplos polos com auditoria forense integral.",
@@ -114,7 +114,7 @@ export async function logAuditTrail(
     subtitle: "Suíte de Diagnósticos e Compilador de Contexto Local para IA",
     category: "Ferramental IA / Local",
     clientOrScope: "Estação de Trabalho Autônoma para Engenharia de Software",
-    period: "2024 - Atual",
+    period: "2026 - Atual",
     status: "Alpha Estável",
     summary:
       "Estação de trabalho desktop desenvolvida para higienização estrita de bases de código e compilação de pacotes de contexto otimizados para Grandes Modelos de Linguagem (Claude 3.5, Gemini 1.5/2.0, GPT-4o, Cursor), operando cem por cento offline sem vazamento de dados confidenciais.",
@@ -174,7 +174,7 @@ export function sanitizeAndTokenize(fileContent, filePath) {
     subtitle: "Sistema Unificado de Reservas e Inventários de Hospitalidade",
     category: "SaaS & Hotelaria",
     clientOrScope: "Empreendimento de Locação por Temporada e Hotelaria",
-    period: "2024 - 2026",
+    period: "2026 - Atual",
     status: "Produção Ativa",
     summary:
       "Plataforma completa de gestão imobiliária e hospitalidade que elimina overbooking por validação temporal matemática estrita, audita o ciclo de integridade de ativos de luxo e automatiza reservas via Central WhatsApp com failover humano.",
@@ -329,7 +329,7 @@ export function calculateWarriorStreak(trainings: Date[]): { streakWeeks: number
     subtitle: "Atendimento Cívico Inteligente e Zeladoria Urbana",
     category: "Tecnologia Cívica",
     clientOrScope: "Comunidade e Gestão Urbana de Porto Velho",
-    period: "2024 - 2026",
+    period: "2025-2026",
     status: "Implantado",
     summary:
       "Plataforma de canal direto para denúncias de infraestrutura urbana (descarte irregular de entulho, iluminação pública, recapeamento) com triagem por WhatsApp, geração de protocolo unificado, mapa de calor territorial e estrita conformidade com a LGPD.",

@@ -46,10 +46,10 @@ export function ExecutiveTerminal() {
                   E-mail Profissional
                 </span>
                 <a
-                  href="mailto:contato@welyz.dev"
+                  href="mailto:ruizwernnon@gmail.com"
                   className="text-white hover:text-gold transition-colors font-mono"
                 >
-                  contato@welyz.dev
+                  ruizwernnon@gmail.com
                 </a>
               </div>
 
@@ -58,12 +58,12 @@ export function ExecutiveTerminal() {
                   WhatsApp Direto
                 </span>
                 <a
-                  href="https://wa.me/5569999999999"
+                  href="https://wa.me/5569992473397"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-gold transition-colors font-mono"
                 >
-                  +55 (69) 99999-9999
+                  +55 (69) 99247-3397
                 </a>
               </div>
 
@@ -86,7 +86,7 @@ export function ExecutiveTerminal() {
                   Rede Profissional
                 </span>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/wernnon-ruiz-ba097b254/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-gold transition-colors font-mono"
