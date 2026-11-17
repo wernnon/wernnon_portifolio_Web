@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+body {
+  background-color: #070A0F;
+  color: #E2E8F0;
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  selection-background-color: #E4B276;
+  selection-color: #120305;
+}
+
+::selection {
+  background: #E4B276;
+  color: #120305;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0F17;
+}
+::-webkit-scrollbar-thumb {
+  background: #242D45;
+  border-radius: 9999px;
+  border: 1px solid rgba(228, 178, 118, 0.15);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E4B276;
+}
+
+/* Monogram Clover Pattern Tile (Gothic Quatrefoil in SVG) */
+.bg-clover-pattern {
+  background-color: #1A0508;
+  background-image: 
+    radial-gradient(circle at center, transparent 30%, rgba(7, 10, 15, 0.85) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='%235E121C' fill-opacity='0.45'%3E%3Cpath d='M24 16c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm-8 8c0-2.2-1.8-4-4-4s-4 1.8-4 4 1.8 4 4 4 4-1.8 4-4zm8 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm8-8c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zm-8-3a3 3 0 1 0 0 6 3 3 0 0 0 0-6z'/%3E%3Cpath d='M0 0h2v2H0zm46 0h2v2h-2zm0 46h2v2h-2zM0 46h2v2H0z' fill='%23E4B276' fill-opacity='0.12'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Glass and Cockpit Panels */
+.glass-panel {
+  background: rgba(16, 21, 34, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(228, 178, 118, 0.1);
+  box-shadow: 0 18px 38px -10px rgba(0, 0, 0, 0.65), 0 0 1px 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.glass-panel-glow {
+  background: rgba(16, 21, 34, 0.82);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(228, 178, 118, 0.24);
+  box-shadow: 0 20px 45px -12px rgba(94, 18, 28, 0.35), 0 0 20px rgba(228, 178, 118, 0.08) inset;
+}
+
+.cockpit-card {
+  background: #101522;
+  border: 1px solid #1F273B;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cockpit-card:hover {
+  border-color: rgba(228, 178, 118, 0.35);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.8), 0 0 24px -6px rgba(228, 178, 118, 0.12);
+}
+
+/* Subtle Shimmer for High-Priority CTAs */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF1DF 0%, #E4B276 50%, #C69355 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.burgundy-gradient-text {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 40%, #8E1524 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
