@@ -69,13 +69,13 @@ export const PROJECTS_DATA: ProjectCase[] = [
       {
         src: "/assets/images/semtel-dashboard.jpg",
         alt: "SEMTEL - Painel Analítico de Governança Socioesportiva",
-        caption: "Painel Analítico de Governança Municipal: 25 alunos na amostra ativa, 16 polos, 30 turmas e evolução de presença mensal.",
+        caption: "Painel Analítico de Governança Municipal: Indicadores de 25 alunos, 16 polos, 30 turmas e gráfico de distribuição territorial por polo.",
         highlight: true
       },
       {
         src: "/assets/images/semtel-ballet.jpg",
         alt: "SEMTEL - Diário de Classe Digital e Prontuário de Alunos",
-        caption: "Diário de Classe Granular: Turma de Ballet na Academia Dragon com 52% de presença, 42 chamadas e prontuário nominal."
+        caption: "Diário de Classe Granular: Turma de Ballet na Academia Dragon (programa Qualidade de Vida) com 52% de presença em 42 chamadas registradas."
       }
     ],
     interactiveSnippet: {
@@ -209,13 +209,13 @@ export function sanitizeAndTokenize(fileContent, filePath) {
       {
         src: "/assets/images/wlw-dashboard.jpg",
         alt: "WLW PRO - Painel de Controle Financeiro e Calendário de Reservas",
-        caption: "Painel de Controle: Faturamento de R$ 16.510,10, 6 reservas ativas e calendário dinâmico de ocupação.",
+        caption: "Painel de Controle: Faturamento registrado de R$ 16.510,10, 6 reservas ativas no período e calendário de ocupação de acomodações.",
         highlight: true
       },
       {
         src: "/assets/images/wlw-whatsapp.jpg",
         alt: "WLW PRO - Central de Atendimento WhatsApp e Robô de Reservas",
-        caption: "Central WhatsApp: Pareamento via QR Code, fila de clientes ativos e alternância entre robô e humano."
+        caption: "Central de Atendimento WhatsApp: Pareamento via QR Code, lista de hóspedes ativos e alternância ágil entre robô e operador humano."
       }
     ],
     interactiveSnippet: {
@@ -288,18 +288,18 @@ export async function assertNoBookingCollision(
       {
         src: "/assets/images/boru-hero.jpg",
         alt: "Borü Centro de Combate - Hero e Proposta de Valor",
-        caption: "Apresentação de Impacto: Mais que um treino, uma transformação. +500 alunos e tatame climatizado.",
+        caption: "Landing Page Institucional: Mais que um treino, uma transformação. +500 alunos ativos e tatame climatizado de 180 m².",
         highlight: true
       },
       {
         src: "/assets/images/boru-planos.png",
         alt: "Borü - Matriz de Planos de Treinamento",
-        caption: "Matriz Transparente de Planos: Opções de 2x, 3x, 5x na semana e destaque carmesim para o Plano Livre."
+        caption: "Tabela de Planos de Treinamento: Valores transparentes (2x, 3x, 5x na semana) e destaque carmesim para o Plano Livre (R$ 280,00)."
       },
       {
         src: "/assets/images/boru-horarios.jpg",
         alt: "Borü - Grade Completa de Horários de Treino",
-        caption: "Grade Dinâmica: Filtros de turnos (Manhã, Tarde, Noite) e turmas adultas/kids do Prof. Felipe Borü."
+        caption: "Grade de Horários Dinâmica: Filtros de turnos (Manhã, Tarde, Noite) e turmas de Muay Thai conduzidas pelo Prof. Felipe Borü."
       }
     ],
     interactiveSnippet: {

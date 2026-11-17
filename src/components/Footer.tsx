@@ -22,11 +22,11 @@ export function Footer() {
           {/* Brand Signature */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl overflow-hidden border border-sand/30 bg-burgundy-deep flex items-center justify-center p-1">
+              <div className="w-10 h-10 rounded-xl overflow-hidden border border-sand/30 bg-burgundy-deep flex items-center justify-center p-1.5">
                 <img
-                  src="/assets/images/welyz-calligraphy-white.jpg"
+                  src="/assets/images/welyz-signature-cropped.png"
                   alt="Wernnon Ruiz Signature"
-                  className="w-full h-full object-contain filter contrast-125"
+                  className="w-full h-full object-contain filter drop-shadow"
                 />
               </div>
               <span className="font-sans text-base font-bold text-white tracking-tight">

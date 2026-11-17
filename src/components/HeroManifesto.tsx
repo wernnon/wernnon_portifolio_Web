@@ -60,9 +60,9 @@ export function HeroManifesto() {
             {/* Lettering Signature */}
             <div className="relative z-10 flex flex-col items-center justify-center py-2">
               <img
-                src="/assets/images/welyz-calligraphy-white.jpg"
+                src="/assets/images/welyz-signature-cropped.png"
                 alt="Assinatura Autoral Wernnon Ruiz"
-                className="h-20 sm:h-24 md:h-28 w-auto object-contain filter drop-shadow-[0_4px_16px_rgba(228,178,118,0.35)]"
+                className="h-20 sm:h-24 md:h-28 w-auto object-contain filter drop-shadow-[0_4px_16px_rgba(228,178,118,0.4)]"
               />
               <span className="text-[11px] font-sans font-semibold tracking-wider text-sand/90 mt-1">
                 Wernnon Ruiz • Marca Pessoal

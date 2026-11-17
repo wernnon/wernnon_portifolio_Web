@@ -39,11 +39,11 @@ export function Navigation() {
             href="#apresentacao"
             className="flex items-center gap-3.5 group focus:outline-none"
           >
-            <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-sand/30 bg-burgundy-deep flex items-center justify-center p-1 group-hover:border-sand transition-all shadow-md shadow-burgundy/30">
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-sand/30 bg-burgundy-deep flex items-center justify-center p-1.5 group-hover:border-sand transition-all shadow-md shadow-burgundy/30">
               <img
-                src="/assets/images/welyz-calligraphy-white.jpg"
+                src="/assets/images/welyz-signature-cropped.png"
                 alt="Wernnon Ruiz Autoral Signature"
-                className="w-full h-full object-contain filter contrast-125"
+                className="w-full h-full object-contain filter drop-shadow"
               />
             </div>
             <div>

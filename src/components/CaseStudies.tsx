@@ -220,7 +220,7 @@ export function CaseStudies() {
           </div>
 
           {/* Real Operational Screenshots Section */}
-          {activeProject.images.length > 0 && (
+          {activeProject.images.length > 0 ? (
             <div className="pt-8 border-t border-obsidian-border">
               <div className="flex items-center justify-between mb-6">
                 <div>
@@ -229,7 +229,7 @@ export function CaseStudies() {
                     Registros Visuais das Aplicações em Produção
                   </h4>
                   <p className="text-xs text-slate-400 font-sans">
-                    Clique nas capturas de tela para ampliar e inspecionar detalhes de interface e indicadores.
+                    Clique nas capturas de tela para ampliar e inspecionar detalhes de interface e indicadores em alta definição.
                   </p>
                 </div>
               </div>
@@ -246,26 +246,123 @@ export function CaseStudies() {
                         activeProject.title
                       )
                     }
-                    className="group relative rounded-2xl overflow-hidden border border-obsidian-border bg-black cursor-pointer hover:border-sand/50 transition-all shadow-lg hover:shadow-2xl"
+                    className="group relative rounded-2xl overflow-hidden border border-obsidian-border bg-[#090D15] cursor-pointer hover:border-sand/60 transition-all shadow-lg hover:shadow-2xl flex flex-col justify-between"
                   >
-                    <div className="aspect-[16/9] w-full overflow-hidden bg-obsidian-deepest relative">
+                    <div className="w-full bg-[#05070B] relative p-1.5 flex items-center justify-center">
                       <img
                         src={img.src}
                         alt={img.alt}
-                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-auto object-contain rounded-lg group-hover:opacity-95 transition-all duration-300"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
-                      <div className="absolute top-3 right-3 p-2 rounded-lg bg-black/60 text-sand backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="absolute top-3 right-3 p-2 rounded-lg bg-black/70 text-sand backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity border border-sand/30 shadow">
                         <Maximize2 className="w-4 h-4" />
                       </div>
                     </div>
                     <div className="p-3.5 bg-[#0D1117] border-t border-obsidian-border">
-                      <p className="text-xs text-slate-300 font-sans leading-tight">
+                      <p className="text-xs text-slate-300 font-sans leading-relaxed">
                         {img.caption}
                       </p>
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          ) : (
+            <div className="pt-8 border-t border-obsidian-border">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h4 className="text-sm font-sans uppercase tracking-wider text-slate-200 flex items-center gap-2 font-bold">
+                    <Maximize2 className="w-4 h-4 text-sand" />
+                    Fluxo Operacional Conversacional & Geoprocessamento
+                  </h4>
+                  <p className="text-xs text-slate-400 font-sans">
+                    Simulação da arquitetura de atendimento cívico via WhatsApp Web.js com captura de geolocalização e triagem por protocolo.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                {/* Simulated Phone Chat */}
+                <div className="lg:col-span-6 bg-[#0B141A] rounded-2xl p-5 border border-emerald/30 shadow-xl font-sans text-xs">
+                  <div className="flex items-center gap-3 pb-3 border-b border-emerald/20 mb-4">
+                    <div className="w-9 h-9 rounded-full bg-emerald flex items-center justify-center text-slate-900 font-bold text-sm">
+                      ZC
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white">Zapp Cidadão ON • Ouvidoria PVH</p>
+                      <p className="text-[10px] text-emerald-light">Canal Oficial de Atendimento</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 font-sans">
+                    <div className="bg-[#202C33] text-slate-200 p-3 rounded-2xl rounded-tl-none max-w-[85%]">
+                      <p className="font-semibold text-sand text-[11px] mb-1">Assistente Cívico</p>
+                      Olá! Sou o assistente de zeladoria de Porto Velho. Selecione a opção desejada:
+                      <div className="mt-2 space-y-1 font-mono text-[10px] text-slate-300">
+                        <div>1. Iluminação Pública</div>
+                        <div>2. Tapa-buracos e Recapeamento</div>
+                        <div>3. Coleta e Entulho</div>
+                      </div>
+                    </div>
+
+                    <div className="bg-[#005C4B] text-white p-3 rounded-2xl rounded-tr-none max-w-[80%] ml-auto">
+                      Opção 2 - Tapa-buracos na Av. Sete de Setembro
+                    </div>
+
+                    <div className="bg-[#202C33] text-slate-200 p-3 rounded-2xl rounded-tl-none max-w-[85%]">
+                      📍 Por favor, compartilhe sua localização atual via GPS para despacharmos a equipe técnica.
+                    </div>
+
+                    <div className="bg-[#005C4B] text-white p-3 rounded-2xl rounded-tr-none max-w-[80%] ml-auto flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-light" />
+                      <span>Localização enviada (-8.7619, -63.9039)</span>
+                    </div>
+
+                    <div className="bg-[#202C33] text-slate-200 p-3 rounded-2xl rounded-tl-none max-w-[90%] border border-emerald/40">
+                      <p className="text-emerald-light font-bold text-[11px] mb-1">
+                        ✅ PROTOCOLO GERADO: ZC-BURA-171126-K89F
+                      </p>
+                      Sua solicitação foi registrada no setor de Obras e Pavimentação. Telefone de contato anonimizado conforme LGPD (5569****1234).
+                    </div>
+                  </div>
+                </div>
+
+                {/* Dispatch & Telemetry Card */}
+                <div className="lg:col-span-6 bg-[#0D1117] rounded-2xl p-6 border border-obsidian-border flex flex-col justify-between font-sans">
+                  <div>
+                    <div className="flex items-center justify-between pb-3 border-b border-obsidian-border mb-4">
+                      <span className="text-xs font-mono uppercase text-sand font-bold">
+                        Painel de Zeladoria Urbana
+                      </span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald/20 text-emerald-light border border-emerald/30">
+                        TRIAGEM ATIVA
+                      </span>
+                    </div>
+
+                    <div className="space-y-3 mb-6">
+                      <div className="p-3 bg-[#161B22] rounded-xl border border-obsidian-border flex items-center justify-between text-xs">
+                        <span className="text-slate-400">Protocolo Rastreável:</span>
+                        <span className="font-mono text-sand font-semibold">ZC-BURA-171126-K89F</span>
+                      </div>
+                      <div className="p-3 bg-[#161B22] rounded-xl border border-obsidian-border flex items-center justify-between text-xs">
+                        <span className="text-slate-400">Coordenadas Geográficas:</span>
+                        <span className="font-mono text-slate-200">-8.7619° S, -63.9039° W</span>
+                      </div>
+                      <div className="p-3 bg-[#161B22] rounded-xl border border-obsidian-border flex items-center justify-between text-xs">
+                        <span className="text-slate-400">Mapeamento Territorial:</span>
+                        <span className="text-emerald font-semibold">Leaflet.js + Heatmaps Ativos</span>
+                      </div>
+                      <div className="p-3 bg-[#161B22] rounded-xl border border-obsidian-border flex items-center justify-between text-xs">
+                        <span className="text-slate-400">Proteção de Identidade:</span>
+                        <span className="text-sand font-semibold">LGPD Anonymizer (5569****1234)</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-3 bg-[#161B22] rounded-xl border border-sand/20 text-xs text-slate-300">
+                    <span className="text-sand font-bold">Arquitetura Desacoplada:</span> Repository Pattern alternando entre persistência em PostgreSQL para relatórios executivos e Firestore para mensageria assíncrona.
+                  </div>
+                </div>
               </div>
             </div>
           )}
