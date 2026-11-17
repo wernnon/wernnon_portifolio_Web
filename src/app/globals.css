@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background-color: #0A0A0A;
+}
+
+body {
+  background-color: #0A0A0A;
+  color: #F5F5F5;
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+::selection {
+  background: #E4B276;
+  color: #0A0A0A;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E4B276;
+}
+
+/* Subtle clover tile without gradient blur */
+.bg-clover-tile {
+  background-color: #180407;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cg fill='%232A080C' fill-opacity='0.75'%3E%3Cpath d='M22 14c-1.8 0-3.3-1.5-3.3-3.3S20.2 7.4 22 7.4s3.3 1.5 3.3 3.3-1.5 3.3-3.3 3.3zm-6.6 6.6c0-1.8-1.5-3.3-3.3-3.3S8.8 18.8 8.8 20.6s1.5 3.3 3.3 3.3 3.3-1.5 3.3-3.3zm6.6 6.6c-1.8 0-3.3 1.5-3.3 3.3s1.5 3.3 3.3 3.3 3.3-1.5 3.3-3.3-1.5-3.3-3.3-3.3zm6.6-6.6c0-1.8 1.5-3.3 3.3-3.3s3.3 1.5 3.3 3.3-1.5 3.3-3.3 3.3-3.3-1.5-3.3-3.3z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Editorial line and frame helpers */
+.editorial-border {
+  border-color: #262626;
+}
+
+.editorial-gold-border {
+  border-color: rgba(228, 178, 118, 0.35);
+}

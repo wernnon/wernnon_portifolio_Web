@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
-import "../styles/globals.css";
+import { JetBrains_Mono } from "next/font/google";
+import "./globals.css";
 import { CookieConsent } from "@/components/CookieConsent";
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Wernnon Ruiz | Engenharia de Software e Arquitetura de Sistemas",
@@ -27,15 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="scroll-smooth bg-black">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="pt-BR" className={`scroll-smooth bg-black ${jetbrainsMono.variable}`}>
       <body className="bg-[#0A0A0A] text-[#F5F5F5] antialiased selection:bg-[#E4B276] selection:text-[#0A0A0A]">
         {children}
         <CookieConsent />
@@ -43,3 +42,4 @@ export default function RootLayout({
     </html>
   );
 }
+
