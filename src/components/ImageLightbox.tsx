@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Image from "next/image";
-import { X, ZoomIn, Info } from "lucide-react";
 
 interface ImageLightboxProps {
   isOpen: boolean;
@@ -39,49 +37,47 @@ export function ImageLightbox({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
+      role="dialog"
+      aria-modal="true"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90"
       onClick={onClose}
     >
       <div
-        className="relative max-w-6xl w-full bg-obsidian-card border border-sand/20 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
+        className="relative max-w-6xl w-full bg-[#121212] border border-[#262626] flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-obsidian-border bg-obsidian-panel/90">
-          <div className="flex items-center space-x-3">
-            <span className="flex h-2.5 w-2.5 rounded-full bg-sand animate-ping" />
-            <div>
-              <p className="text-xs uppercase tracking-widest text-sand/80 font-mono">
-                {projectTitle || "Inspeção de Interface Operacional"}
-              </p>
-              <h4 className="text-sm font-semibold text-slate-100 truncate max-w-md">
-                {imageAlt}
-              </h4>
-            </div>
+        <div className="flex items-center justify-between px-6 py-3.5 border-b border-[#262626] bg-black">
+          <div>
+            <p className="text-[10px] uppercase tracking-widest text-gold font-mono">
+              {projectTitle || "Inspeção de Registro Operacional"}
+            </p>
+            <h4 className="text-xs font-semibold text-white truncate max-w-lg">
+              {imageAlt}
+            </h4>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="p-2 text-slate-400 hover:text-white bg-obsidian-elevated/80 hover:bg-burgundy/60 border border-obsidian-border rounded-lg transition-colors"
-            title="Fechar (Esc)"
+            className="text-xs font-mono text-white-dim hover:text-white px-3 py-1 border border-[#262626]"
           >
-            <X className="w-5 h-5" />
+            [ Fechar / Esc ]
           </button>
         </div>
 
-        {/* Image Display */}
-        <div className="relative flex-1 overflow-auto bg-black flex items-center justify-center min-h-[300px] p-2">
+        {/* Uncropped Image Display */}
+        <div className="relative flex-1 overflow-auto bg-black flex items-center justify-center p-4">
           <img
             src={imageSrc}
             alt={imageAlt}
-            className="max-h-[70vh] w-auto max-w-full object-contain rounded-lg border border-obsidian-border/50 shadow-inner"
+            className="max-h-[72vh] w-auto max-w-full object-contain block"
           />
         </div>
 
-        {/* Footer with Caption */}
+        {/* Caption */}
         {caption && (
-          <div className="px-6 py-3.5 bg-obsidian-panel border-t border-obsidian-border flex items-start gap-3">
-            <Info className="w-4 h-4 text-sand flex-shrink-0 mt-0.5" />
-            <p className="text-xs text-slate-300 leading-relaxed font-sans">
+          <div className="px-6 py-3 bg-[#121212] border-t border-[#262626]">
+            <p className="text-xs text-white-dim leading-relaxed font-sans">
               {caption}
             </p>
           </div>

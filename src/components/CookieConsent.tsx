@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Cookie, Shield, Check, X, SlidersHorizontal } from "lucide-react";
 
 export interface CookiePreferences {
   essential: boolean;
@@ -29,7 +28,6 @@ export function CookieConsent() {
       }
     }
 
-    // Event listener to allow reopening from Footer
     const handleReopen = () => {
       setShowModal(true);
     };
@@ -64,55 +62,46 @@ export function CookieConsent() {
 
   return (
     <>
-      {/* Floating Discrete Banner */}
+      {/* Editorial Floating Banner */}
       {showBanner && !showModal && (
         <aside
           role="dialog"
           aria-label="Consentimento de Cookies"
-          className="fixed bottom-4 left-4 right-4 sm:left-6 sm:right-auto sm:max-w-xl z-50 animate-in fade-in slide-in-from-bottom-5 duration-300"
+          className="fixed bottom-0 left-0 right-0 z-50 bg-[#121212] border-t border-[#262626] p-4 sm:p-5 shadow-2xl"
         >
-          <div className="bg-[#121620]/95 backdrop-blur-xl border border-sand/25 rounded-2xl p-4 sm:p-5 shadow-2xl shadow-black/60 text-slate-200">
-            <div className="flex items-start gap-3.5 mb-3">
-              <div className="w-9 h-9 rounded-xl bg-burgundy/60 border border-sand/30 flex items-center justify-center shrink-0 text-sand">
-                <Cookie className="w-4 h-4" />
-              </div>
-              <div className="flex-1">
-                <h4 className="text-xs sm:text-sm font-semibold text-white font-sans">
-                  Privacidade & Preferências de Cookies
-                </h4>
-                <p className="text-xs text-slate-300 leading-relaxed mt-1 font-sans">
-                  Este portfólio utiliza cookies estritamente necessários para navegação e
-                  métricas anônimas de desempenho para otimizar a experiência técnica do visitante.
-                </p>
-              </div>
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="max-w-3xl">
+              <h4 className="text-xs font-mono uppercase tracking-wider text-gold font-semibold mb-1">
+                Privacidade e Cookies
+              </h4>
+              <p className="text-xs text-white-muted leading-relaxed">
+                Este portfólio utiliza cookies estritamente necessários para navegação e
+                métricas anônimas de desempenho para verificar a estabilidade das demonstrações.
+              </p>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-2.5 pt-2 border-t border-obsidian-border/70">
+            <div className="flex items-center gap-3 shrink-0">
               <button
                 type="button"
                 onClick={() => setShowModal(true)}
-                className="text-xs font-mono text-sand/90 hover:text-sand hover:underline flex items-center gap-1.5 px-2 py-1"
+                className="px-3 py-1.5 text-xs font-mono text-white-dim hover:text-white border border-[#262626]"
               >
-                <SlidersHorizontal className="w-3.5 h-3.5" />
-                <span>Preferências</span>
+                Preferências
               </button>
-
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => savePreferences(true)}
-                  className="px-3.5 py-1.5 text-xs font-mono text-slate-300 hover:text-white bg-obsidian-panel hover:bg-obsidian-elevated border border-obsidian-border rounded-lg transition-colors"
-                >
-                  Apenas Necessários
-                </button>
-                <button
-                  type="button"
-                  onClick={() => savePreferences(false)}
-                  className="px-4 py-1.5 text-xs font-mono font-medium text-burgundy-darkest bg-sand hover:bg-sand-light rounded-lg shadow transition-colors"
-                >
-                  Aceitar Todos
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => savePreferences(true)}
+                className="px-3.5 py-1.5 text-xs font-mono text-white-muted hover:text-white border border-[#333333] bg-black"
+              >
+                Apenas Necessários
+              </button>
+              <button
+                type="button"
+                onClick={() => savePreferences(false)}
+                className="px-4 py-1.5 text-xs font-mono font-semibold text-black bg-gold hover:bg-gold-hover"
+              >
+                Aceitar Todos
+              </button>
             </div>
           </div>
         </aside>
@@ -123,90 +112,65 @@ export function CookieConsent() {
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85"
           onClick={() => setShowModal(false)}
         >
           <div
-            className="w-full max-w-lg bg-[#121620] border border-sand/30 rounded-2xl shadow-2xl overflow-hidden p-6 text-slate-200 font-sans"
+            className="w-full max-w-lg bg-[#121212] border border-[#262626] p-6 sm:p-8 space-y-6"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between pb-4 border-b border-obsidian-border mb-4">
-              <div className="flex items-center gap-2.5">
-                <Shield className="w-5 h-5 text-sand" />
-                <h3 className="text-base font-bold text-white">
-                  Gerenciamento de Privacidade
-                </h3>
-              </div>
+            <div className="flex items-center justify-between pb-4 border-b border-[#262626]">
+              <h3 className="text-sm font-mono uppercase tracking-wider text-white font-bold">
+                Preferências de Cookies
+              </h3>
               <button
                 type="button"
                 onClick={() => setShowModal(false)}
-                className="p-1.5 text-slate-400 hover:text-white bg-obsidian-panel rounded-lg border border-obsidian-border"
-                aria-label="Fechar"
+                className="text-xs font-mono text-white-dim hover:text-white"
               >
-                <X className="w-4 h-4" />
+                [ Fechar ]
               </button>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed mb-5">
-              Personalize suas preferências de cookies. Suas escolhas são preservadas por até 12 meses
-              e podem ser revistas a qualquer momento no rodapé do site.
-            </p>
-
-            <div className="space-y-4 mb-6">
-              {/* Essential Cookies */}
-              <div className="p-3.5 rounded-xl bg-obsidian-panel border border-obsidian-border">
-                <div className="flex items-center justify-between mb-1.5">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-semibold text-slate-100">
-                      1. Cookies Essenciais
-                    </span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald/20 text-emerald-light border border-emerald/30">
-                      Sempre Ativo
-                    </span>
-                  </div>
-                  <span className="text-xs font-mono text-slate-500">Obrigatório</span>
+            <div className="space-y-4 text-xs">
+              <div className="p-4 bg-black border border-[#262626] space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-white">1. Cookies Essenciais</span>
+                  <span className="text-[10px] font-mono text-gold uppercase">Sempre Ativo</span>
                 </div>
-                <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Essenciais para a navegabilidade fundamental, memorização de preferências de sessão
-                  e integridade do site.
+                <p className="text-white-dim leading-relaxed">
+                  Necessários para o funcionamento técnico da página e armazenamento do seu consentimento.
                 </p>
               </div>
 
-              {/* Analytics Cookies */}
-              <div className="p-3.5 rounded-xl bg-obsidian-panel border border-obsidian-border">
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-xs font-semibold text-slate-100">
-                    2. Cookies de Análise e Desempenho
-                  </span>
-                  <label className="relative inline-flex items-center cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={analyticsEnabled}
-                      onChange={(e) => setAnalyticsEnabled(e.target.checked)}
-                      className="sr-only peer"
-                    />
-                    <div className="w-9 h-5 bg-obsidian-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-sand" />
-                  </label>
+              <div className="p-4 bg-black border border-[#262626] space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-white">2. Cookies de Análise</span>
+                  <input
+                    type="checkbox"
+                    checked={analyticsEnabled}
+                    onChange={(e) => setAnalyticsEnabled(e.target.checked)}
+                    className="accent-gold w-4 h-4 cursor-pointer"
+                  />
                 </div>
-                <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Permitem mensurar o volume agregado e anônimo de acessos para aprimorar o desempenho
-                  e tempo de resposta das demonstrações interativas.
+                <p className="text-white-dim leading-relaxed">
+                  Coleta anônima e agregada de telemetria técnica de carregamento da página.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-3 pt-4 border-t border-obsidian-border">
+            <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#262626]">
               <button
                 type="button"
                 onClick={() => savePreferences(true)}
-                className="px-3.5 py-2 text-xs font-mono text-slate-300 hover:text-white bg-obsidian-panel border border-obsidian-border rounded-xl"
+                className="px-4 py-2 text-xs font-mono text-white-dim border border-[#262626] hover:text-white"
               >
                 Rejeitar Opcionais
               </button>
               <button
                 type="button"
                 onClick={saveCustom}
-                className="px-4 py-2 text-xs font-mono font-medium text-burgundy-darkest bg-sand hover:bg-sand-light rounded-xl shadow"
+                className="px-5 py-2 text-xs font-mono font-semibold text-black bg-gold hover:bg-gold-hover"
               >
                 Salvar Preferências
               </button>

@@ -3,14 +3,13 @@ import "../styles/globals.css";
 import { CookieConsent } from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
-  title: "Wernnon Ruiz — Engenheiro de Software & Arquiteto de Soluções",
+  title: "Wernnon Ruiz | Engenharia de Software e Arquitetura de Sistemas",
   description:
-    "Portfólio Profissional de Wernnon Ruiz: Concepção e entrega de plataformas de missão crítica, sistemas integrados de gestão, IA local e ecossistemas SaaS corporativos.",
+    "Portfólio de engenharia de software de Wernnon Ruiz. Projetos em produção abrangendo gestão pública, inteligência artificial local, hospitalidade e tecnologia cívica.",
   keywords: [
     "Wernnon Ruiz",
     "Engenheiro de Software",
-    "Arquiteto de Soluções",
-    "Fullstack Engineer",
+    "Arquitetura de Sistemas",
     "Next.js",
     "Fastify",
     "TypeScript",
@@ -20,12 +19,6 @@ export const metadata: Metadata = {
     "Rondônia"
   ],
   authors: [{ name: "Wernnon Ruiz" }],
-  openGraph: {
-    title: "Wernnon Ruiz — Engenharia de Software & Produtos Digitais",
-    description:
-      "Soluções digitais completas unindo engenharia de software de alta performance, clareza de métricas e identidade autoral refinada.",
-    type: "website",
-  },
 };
 
 export default function RootLayout({
@@ -34,16 +27,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="dark scroll-smooth">
+    <html lang="pt-BR" className="scroll-smooth bg-black">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="bg-obsidian-deepest text-slate-200 antialiased font-sans selection:bg-sand selection:text-burgundy-darkest">
+      <body className="bg-[#0A0A0A] text-[#F5F5F5] antialiased selection:bg-[#E4B276] selection:text-[#0A0A0A]">
         {children}
         <CookieConsent />
       </body>

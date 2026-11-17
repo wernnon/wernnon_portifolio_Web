@@ -1,8 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import { ArrowUp, Shield, Cookie } from "lucide-react";
-
 export function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -13,82 +10,61 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#090D14] border-t border-obsidian-border/70 pt-16 pb-12 overflow-hidden">
-      {/* Subtle Clover Monogram Background Mask */}
-      <div className="absolute inset-0 bg-clover-pattern opacity-10 pointer-events-none" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-obsidian-border/50">
-          {/* Brand Signature */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl overflow-hidden border border-sand/30 bg-burgundy-deep flex items-center justify-center p-1.5">
-                <img
-                  src="/assets/images/welyz-signature-cropped.png"
-                  alt="Wernnon Ruiz Signature"
-                  className="w-full h-full object-contain filter drop-shadow"
-                />
-              </div>
-              <span className="font-sans text-base font-bold text-white tracking-tight">
-                Wernnon Ruiz <span className="text-sand font-mono font-normal text-xs">// Software & Produto</span>
+    <footer className="bg-black border-t border-[#262626] py-16">
+      <div className="max-w-6xl mx-auto px-6 space-y-12">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b border-[#262626]">
+          {/* Brand */}
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded border border-gold/40 bg-burgundy-deep flex items-center justify-center p-1">
+              <img
+                src="/assets/images/welyz-signature-cropped.png"
+                alt="Wernnon Ruiz"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div>
+              <span className="text-sm font-semibold text-white block">
+                Wernnon Ruiz
+              </span>
+              <span className="text-xs text-white-dim block">
+                Engenharia de Software e Arquitetura de Sistemas
               </span>
             </div>
-            <p className="text-xs text-slate-400 max-w-sm leading-relaxed font-sans">
-              Engenharia de software, sistemas de gestão de alto impacto e produtos digitais
-              entregues com foco em valor de negócio em Porto Velho - RO.
-            </p>
           </div>
 
-          {/* Quick Jump Links */}
-          <div className="flex flex-wrap items-center justify-center gap-6 font-sans text-xs text-slate-400">
-            <a href="#apresentacao" className="hover:text-sand transition-colors">
-              Apresentação
-            </a>
-            <a href="#projetos" className="hover:text-sand transition-colors">
-              Projetos
-            </a>
-            <a href="#competencias" className="hover:text-sand transition-colors">
-              Competências
-            </a>
-            <a href="#dev-lab" className="hover:text-sand transition-colors">
-              Dev Lab
-            </a>
-            <a href="#contato" className="hover:text-sand transition-colors">
-              Contato
-            </a>
+          {/* Nav Links */}
+          <div className="flex flex-wrap items-center gap-6 text-xs uppercase tracking-wider text-white-dim font-mono">
+            <a href="#sobre" className="hover:text-gold transition-colors">Sobre</a>
+            <a href="#projetos" className="hover:text-gold transition-colors">Projetos</a>
+            <a href="#competencias" className="hover:text-gold transition-colors">Competências</a>
+            <a href="#ferramental" className="hover:text-gold transition-colors">Ferramental</a>
+            <a href="#contato" className="hover:text-gold transition-colors">Contato</a>
           </div>
 
-          {/* Actions: Cookie settings & Scroll to top */}
-          <div className="flex items-center gap-3">
+          {/* Actions */}
+          <div className="flex items-center gap-4 text-xs font-mono">
             <button
               type="button"
               onClick={openCookiePreferences}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#161B22] border border-obsidian-border hover:border-sand/40 text-xs font-sans text-slate-300 hover:text-sand transition-all"
-              title="Ajustar consentimento e política de cookies"
+              className="px-3 py-1.5 border border-[#262626] text-white-dim hover:text-gold hover:border-gold transition-colors"
             >
-              <Cookie className="w-3.5 h-3.5 text-sand" />
-              <span>Cookies</span>
+              Cookies
             </button>
-
             <button
+              type="button"
               onClick={scrollToTop}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#161B22] border border-obsidian-border hover:border-sand/40 text-xs font-sans text-slate-300 hover:text-sand transition-all group"
+              className="px-3 py-1.5 border border-[#262626] text-white-dim hover:text-gold hover:border-gold transition-colors"
             >
-              <span>Topo</span>
-              <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
+              Topo
             </button>
           </div>
         </div>
 
-        {/* Bottom Credits & Status */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-slate-500">
-          <div className="flex items-center gap-2">
-            <Shield className="w-3.5 h-3.5 text-sand" />
-            <span>
-              Conformidade com LGPD • Next.js 14 • Fastify • PostgreSQL • Electron Desktop
-            </span>
-          </div>
-
+        {/* Legal & Standards */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono text-white-dim">
+          <p>
+            Conformidade LGPD • Next.js 14 • Fastify • PostgreSQL • Electron
+          </p>
           <p>
             © {new Date().getFullYear()} Wernnon Ruiz. Todos os direitos reservados.
           </p>
