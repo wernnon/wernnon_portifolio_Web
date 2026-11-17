@@ -11,14 +11,41 @@ export function ExecutiveTerminal() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const mailtoUrl = `mailto:ruizwernnon@gmail.com?subject=${encodeURIComponent(
+    `[Contato Portfólio] ${formData.subject}: ${formData.name || "Sem Nome"}`
+  )}&body=${encodeURIComponent(
+    `Nome: ${formData.name}\nE-mail: ${formData.email}\nAssunto: ${formData.subject}\n\nMensagem:\n${formData.message}`
+  )}`;
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    setErrorMsg(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setSent(true);
+      } else {
+        // Fallback: If external mail service fails, let the user trigger mailto directly
+        setErrorMsg(
+          data.error || "Não foi possível despachar automaticamente. Clique abaixo para abrir seu cliente de e-mail."
+        );
+      }
+    } catch {
+      setErrorMsg("Falha na conexão de envio. Você pode enviar diretamente pelo botão de e-mail abaixo.");
+    } finally {
       setIsSubmitting(false);
-      setSent(true);
-    }, 700);
+    }
   };
 
   return (
@@ -43,11 +70,11 @@ export function ExecutiveTerminal() {
             <div className="space-y-6 text-sm">
               <div>
                 <span className="text-xs font-mono uppercase tracking-wider text-gold block mb-1">
-                  E-mail Profissional
+                  E-mail Direto
                 </span>
                 <a
                   href="mailto:ruizwernnon@gmail.com"
-                  className="text-white hover:text-gold transition-colors font-mono"
+                  className="text-white hover:text-gold transition-colors font-mono font-medium"
                 >
                   ruizwernnon@gmail.com
                 </a>
@@ -55,7 +82,7 @@ export function ExecutiveTerminal() {
 
               <div>
                 <span className="text-xs font-mono uppercase tracking-wider text-gold block mb-1">
-                  WhatsApp Direto
+                  WhatsApp Profissional
                 </span>
                 <a
                   href="https://wa.me/5569992473397"
@@ -83,7 +110,7 @@ export function ExecutiveTerminal() {
 
               <div>
                 <span className="text-xs font-mono uppercase tracking-wider text-gold block mb-1">
-                  Rede Profissional
+                  LinkedIn
                 </span>
                 <a
                   href="https://www.linkedin.com/in/wernnon-ruiz-ba097b254/"
@@ -108,24 +135,50 @@ export function ExecutiveTerminal() {
             {sent ? (
               <div className="text-center py-12 space-y-4">
                 <span className="text-xs font-mono uppercase text-gold block">
-                  Mensagem Transmitida
+                  Mensagem Enviada
                 </span>
                 <h3 className="text-xl font-bold text-white">
-                  Obrigado pelo contato.
+                  E-mail transmitido com sucesso.
                 </h3>
                 <p className="text-xs text-white-dim max-w-md mx-auto leading-relaxed">
-                  Sua mensagem foi recebida. Entrarei em contato pelo e-mail informado com brevidade.
+                  A mensagem foi despachada para <strong className="text-white">ruizwernnon@gmail.com</strong>.
+                  Entrarei em contato pelo e-mail informado com brevidade.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => setSent(false)}
-                  className="mt-4 px-4 py-2 text-xs font-mono text-white border border-[#262626] hover:border-gold"
-                >
-                  Enviar Nova Mensagem
-                </button>
+                <div className="pt-4 flex items-center justify-center gap-4">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSent(false);
+                      setFormData({ name: "", email: "", subject: "Desenvolvimento de Projeto ou Consultoria", message: "" });
+                    }}
+                    className="px-4 py-2 text-xs font-mono text-white border border-[#262626] hover:border-gold"
+                  >
+                    Enviar Outra Mensagem
+                  </button>
+                  <a
+                    href="https://wa.me/5569992473397"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 text-xs font-mono text-black bg-gold hover:bg-gold-hover font-semibold"
+                  >
+                    Chamar no WhatsApp
+                  </a>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {errorMsg && (
+                  <div className="p-4 border border-burgundy-light bg-[#180407] text-xs font-mono text-white-muted space-y-2">
+                    <p className="text-gold font-semibold">{errorMsg}</p>
+                    <a
+                      href={mailtoUrl}
+                      className="inline-block text-xs uppercase text-gold hover:underline font-bold"
+                    >
+                      [ Abrir no seu aplicativo de e-mail ]
+                    </a>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-xs font-mono uppercase text-white-dim mb-2">
@@ -139,7 +192,7 @@ export function ExecutiveTerminal() {
                         setFormData({ ...formData, name: e.target.value })
                       }
                       placeholder="Ex: Carlos Eduardo"
-                      className="w-full bg-black border border-[#262626] px-4 py-3 text-xs text-white placeholder:text-[#505050] focus:outline-none focus:border-gold"
+                      className="w-full bg-black border border-[#262626] px-4 py-3 text-xs text-white placeholder:text-[#505050] focus:outline-none focus:border-gold font-sans"
                     />
                   </div>
                   <div>
@@ -154,7 +207,7 @@ export function ExecutiveTerminal() {
                         setFormData({ ...formData, email: e.target.value })
                       }
                       placeholder="carlos@empresa.com.br"
-                      className="w-full bg-black border border-[#262626] px-4 py-3 text-xs text-white placeholder:text-[#505050] focus:outline-none focus:border-gold"
+                      className="w-full bg-black border border-[#262626] px-4 py-3 text-xs text-white placeholder:text-[#505050] focus:outline-none focus:border-gold font-sans"
                     />
                   </div>
                 </div>
@@ -168,7 +221,7 @@ export function ExecutiveTerminal() {
                     onChange={(e) =>
                       setFormData({ ...formData, subject: e.target.value })
                     }
-                    className="w-full bg-black border border-[#262626] px-4 py-3 text-xs text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-black border border-[#262626] px-4 py-3 text-xs text-white focus:outline-none focus:border-gold font-sans"
                   >
                     <option>Desenvolvimento de Plataforma Web ou SaaS</option>
                     <option>Auditoria de Arquitetura e Governança LGPD</option>
@@ -190,17 +243,26 @@ export function ExecutiveTerminal() {
                       setFormData({ ...formData, message: e.target.value })
                     }
                     placeholder="Descreva o objetivo do projeto, requisitos ou prazos esperados..."
-                    className="w-full bg-black border border-[#262626] px-4 py-3 text-xs text-white placeholder:text-[#505050] focus:outline-none focus:border-gold"
+                    className="w-full bg-black border border-[#262626] px-4 py-3 text-xs text-white placeholder:text-[#505050] focus:outline-none focus:border-gold font-sans"
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-3.5 bg-gold hover:bg-gold-hover text-black text-xs font-mono uppercase font-semibold transition-colors disabled:opacity-50"
-                >
-                  {isSubmitting ? "Enviando..." : "Enviar Mensagem Direta"}
-                </button>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-2">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="px-6 py-3.5 bg-gold hover:bg-gold-hover text-black text-xs font-mono uppercase font-semibold transition-colors disabled:opacity-50"
+                  >
+                    {isSubmitting ? "Enviando e-mail..." : "Enviar Mensagem Direta"}
+                  </button>
+
+                  <a
+                    href={mailtoUrl}
+                    className="text-center text-xs font-mono text-white-dim hover:text-gold underline py-2"
+                  >
+                    Ou envie via cliente de e-mail (mailto)
+                  </a>
+                </div>
               </form>
             )}
           </div>
