@@ -166,24 +166,24 @@ export function DeveloperLab() {
   ).toFixed(2);
 
   return (
-    <section id="ato-4-lab" className="py-24 bg-obsidian-deepest relative border-t border-obsidian-border/50">
+    <section id="dev-lab" className="py-24 bg-[#0D1117] relative border-t border-obsidian-border/50">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-burgundy/15 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-obsidian-panel border border-sand/20 text-sand text-xs font-mono mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#161B22] border border-sand/20 text-sand text-xs font-mono mb-4">
             <Terminal className="w-3.5 h-3.5 text-emerald" />
-            <span>ATO 4 // ESTAÇÃO INTERATIVA DE IA LOCAL</span>
+            <span>FERRAMENTAL AVANÇADO // DEMO INTERATIVA</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-            The Developer Lab
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 font-sans">
+            Dev Automation Kit em Ação
           </h2>
-          <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
-            Simulador operacional do <span className="text-sand font-mono">Dev Automation Kit</span>.
-            Experimente em tempo real a árvore de compilação hierárquica, o cálculo dinâmico de tokens BPE
-            e a higienização de segredos sem transmissão de dados.
+          <p className="text-sm sm:text-base text-slate-400 leading-relaxed font-sans">
+            Experimente o simulador do utilitário desktop desenvolvido por Wernnon Ruiz.
+            Teste o empacotamento seletivo de código, a estimativa em tempo real de tokens BPE
+            e a higienização de credenciais sensíveis antes do envio para modelos de IA.
           </p>
         </div>
 

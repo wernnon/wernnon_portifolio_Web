@@ -1,27 +1,29 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
+import { CookieConsent } from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
-  title: "Welyz // Antigravity - Creative Engineering & Mission-Critical Systems",
+  title: "Wernnon Ruiz — Engenheiro de Software & Arquiteto de Soluções",
   description:
-    "Portfólio Conceitual Antigravity: Engenharia de software de alta performance, inteligência artificial local, sistemas públicos de larga escala e ecossistemas SaaS corporativos.",
+    "Portfólio Profissional de Wernnon Ruiz: Concepção e entrega de plataformas de missão crítica, sistemas integrados de gestão, IA local e ecossistemas SaaS corporativos.",
   keywords: [
-    "Welyz",
-    "Antigravity",
-    "Software Engineering",
+    "Wernnon Ruiz",
+    "Engenheiro de Software",
+    "Arquiteto de Soluções",
+    "Fullstack Engineer",
     "Next.js",
     "Fastify",
+    "TypeScript",
     "PostgreSQL",
-    "Prisma",
     "Electron",
-    "Mission-Critical",
-    "Fullstack Engineer"
+    "Porto Velho",
+    "Rondônia"
   ],
-  authors: [{ name: "Welyz" }],
+  authors: [{ name: "Wernnon Ruiz" }],
   openGraph: {
-    title: "Welyz // Antigravity - Creative Engineering",
+    title: "Wernnon Ruiz — Engenharia de Software & Produtos Digitais",
     description:
-      "A convergência entre identidade de alta costura e sistemas de missão crítica.",
+      "Soluções digitais completas unindo engenharia de software de alta performance, clareza de métricas e identidade autoral refinada.",
     type: "website",
   },
 };
@@ -43,6 +45,7 @@ export default function RootLayout({
       </head>
       <body className="bg-obsidian-deepest text-slate-200 antialiased font-sans selection:bg-sand selection:text-burgundy-darkest">
         {children}
+        <CookieConsent />
       </body>
     </html>
   );
