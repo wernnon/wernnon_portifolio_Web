@@ -55,7 +55,7 @@ const PROJECTS_DATA = [
     period: "2026 - Atual",
     status: "Alpha Estável",
     projectUrl: "",
-    repoUrl: "https://github.com/wernnon",
+    repoUrl: "https://dev-automation-kit.github.io/dev-automation-kit-web/",
     summary:
       "Estação de trabalho desktop desenvolvida para higienização estrita de bases de código e compilação de pacotes de contexto otimizados para Grandes Modelos de Linguagem (Claude 3.5, Gemini 1.5/2.0, GPT-4o, Cursor), operando cem por cento offline sem vazamento de dados confidenciais.",
     problem:
