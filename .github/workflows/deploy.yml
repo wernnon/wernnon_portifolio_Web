@@ -28,12 +28,26 @@ jobs:
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Build Clean Static Site
+        run: |
+          mkdir -p _site
+          cp -f index.html _site/
+          cp -f styles.css _site/
+          cp -f script.js _site/
+          cp -f favicon.ico _site/ 2>/dev/null || true
+          cp -f icon.png _site/ 2>/dev/null || true
+          cp -f apple-icon.png _site/ 2>/dev/null || true
+          cp -r assets _site/
+          # Disable Jekyll processing on GitHub Pages
+          touch _site/.nojekyll
 
       - name: Upload Static HTML Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Deploy the static HTML version from root directory
-          path: '.'
+          path: '_site'
 
       - name: Deploy to GitHub Pages
         id: deployment
