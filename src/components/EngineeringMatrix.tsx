@@ -65,12 +65,12 @@ export function EngineeringMatrix() {
           {technicalAreas.map((area, idx) => (
             <div
               key={idx}
-              className="border border-[#262626] bg-[#121212] p-6 space-y-4"
+              className="border border-[#262626] bg-[#121212] p-6 space-y-4 transition-all duration-300 ease-out hover:scale-[1.10] hover:z-20 relative hover:border-gold hover:shadow-2xl hover:shadow-black/80 group cursor-default"
             >
-              <span className="text-[10px] font-mono uppercase text-gold block">
+              <span className="text-[10px] font-mono uppercase text-gold block group-hover:tracking-wider transition-all">
                 Área 0{idx + 1}
               </span>
-              <h3 className="text-base font-semibold text-white">
+              <h3 className="text-base font-semibold text-white group-hover:text-gold transition-colors">
                 {area.title}
               </h3>
               <p className="text-xs text-white-dim leading-relaxed">
@@ -79,7 +79,7 @@ export function EngineeringMatrix() {
               <ul className="pt-2 border-t border-[#262626] space-y-1.5 text-xs font-mono text-white-muted">
                 {area.items.map((it, i) => (
                   <li key={i} className="flex items-center gap-2">
-                    <span className="w-1 h-1 bg-gold rounded-full" />
+                    <span className="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform" />
                     <span>{it}</span>
                   </li>
                 ))}

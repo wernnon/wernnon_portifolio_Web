@@ -101,9 +101,16 @@ export function CaseStudies() {
                   <span className={`text-[10px] font-mono ${isSelected ? "text-gold font-bold" : "text-white-dim"}`}>
                     0{idx + 1}
                   </span>
-                  {isSelected && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-                  )}
+                  <div className="flex items-center gap-1.5">
+                    {proj.projectUrl && (
+                      <span className="text-[10px] font-mono text-gold" title="Possui página online">
+                        ↗
+                      </span>
+                    )}
+                    {isSelected && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                    )}
+                  </div>
                 </div>
                 <span className="text-xs font-semibold block leading-tight truncate">
                   {proj.title}
@@ -136,6 +143,34 @@ export function CaseStudies() {
               <p className="text-xs sm:text-sm text-white-muted mt-3 leading-relaxed">
                 {activeProject.summary}
               </p>
+
+              {/* External Project URL & Repo Action Buttons (if project possesses them) */}
+              {(activeProject.projectUrl || activeProject.repoUrl) && (
+                <div className="flex flex-wrap items-center gap-2.5 mt-4 pt-3 border-t border-[#262626]">
+                  {activeProject.projectUrl && (
+                    <a
+                      href={activeProject.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-mono font-medium text-black bg-gold hover:bg-white transition-colors border border-gold"
+                    >
+                      <span>Acessar Página do Projeto</span>
+                      <span className="text-sm leading-none">↗</span>
+                    </a>
+                  )}
+                  {activeProject.repoUrl && (
+                    <a
+                      href={activeProject.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-mono text-white-dim hover:text-white bg-[#121212] hover:border-gold transition-colors border border-[#262626]"
+                    >
+                      <span>Repositório</span>
+                      <span className="text-sm leading-none">↗</span>
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Performance Expectation Metrics (2x2 Grid) */}
@@ -216,7 +251,7 @@ export function CaseStudies() {
               <div className="space-y-3">
                 {/* Visual Header & Image Switcher Tabs */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-[#262626]">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5">
                     <span className="text-[11px] font-mono uppercase tracking-widest text-gold font-semibold">
                       Registro Visual em Produção
                     </span>
@@ -224,6 +259,17 @@ export function CaseStudies() {
                       <span className="text-[10px] font-mono text-white-dim">
                         ({activeImageIndex + 1}/{activeProject.images.length})
                       </span>
+                    )}
+                    {activeProject.projectUrl && (
+                      <a
+                        href={activeProject.projectUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[10px] font-mono text-gold hover:text-white transition-colors flex items-center gap-0.5"
+                        title="Visitar página do projeto"
+                      >
+                        <span>[Acessar página ↗]</span>
+                      </a>
                     )}
                   </div>
 

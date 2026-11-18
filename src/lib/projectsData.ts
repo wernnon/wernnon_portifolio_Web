@@ -6,6 +6,8 @@ export interface ProjectCase {
   clientOrScope: string;
   period: string;
   status: "Produção Ativa" | "Alpha Estável" | "Implantado";
+  projectUrl?: string; // Link direto para a página ou aplicação em produção (caso possua)
+  repoUrl?: string; // Link para o repositório ou documentação técnica (caso possua)
   summary: string;
   problem: string;
   solution: string;
@@ -116,6 +118,7 @@ export async function logAuditTrail(
     clientOrScope: "Estação de Trabalho Autônoma para Engenharia de Software",
     period: "2026 - Atual",
     status: "Alpha Estável",
+    repoUrl: "https://github.com/wernnon",
     summary:
       "Estação de trabalho desktop desenvolvida para higienização estrita de bases de código e compilação de pacotes de contexto otimizados para Grandes Modelos de Linguagem (Claude 3.5, Gemini 1.5/2.0, GPT-4o, Cursor), operando cem por cento offline sem vazamento de dados confidenciais.",
     problem:
