@@ -763,12 +763,45 @@ function handleGenerateContext() {
 }
 
 // ==========================================
-// 8. FORMULÁRIO DE CONTATO DIRETO VIA AJAX
+// 8. FORMULÁRIO DE CONTATO DIRETO COM FALLBACK RESILIENTE
 // ==========================================
 function initContactForm() {
   const form = document.getElementById("contact-direct-form");
   if (!form) return;
 
+  // 1. Detectar retorno via redirect do FormSubmit (se navegou via GET com ?status=enviado)
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get("status") === "enviado" || urlParams.get("success") === "true") {
+    showContactStatusHtml(
+      `<div class="space-y-1">
+        <p class="font-bold text-emerald-400">✓ Mensagem enviada com sucesso!</p>
+        <p class="text-white-dim text-[11px]">Seu contato foi recebido diretamente por Wernnon Ruiz. Entrarei em contato em até 24 horas úteis.</p>
+      </div>`,
+      "success"
+    );
+    // Limpa a URL para evitar re-exibir o banner ao recarregar
+    if (window.history && window.history.replaceState) {
+      const cleanUrl = window.location.pathname + window.location.hash;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
+  }
+
+  // 2. Configurar campo oculto de redirecionamento dinâmico
+  const redirectInput = document.getElementById("form-redirect-next");
+  if (redirectInput) {
+    redirectInput.value = window.location.origin + window.location.pathname + "?status=enviado#contato";
+  }
+
+  // 3. Atualizar assunto oculto ao alterar o select
+  const subjectSelect = document.getElementById("input-subject");
+  const hiddenSubject = document.getElementById("hidden-email-subject");
+  if (subjectSelect && hiddenSubject) {
+    subjectSelect.addEventListener("change", () => {
+      hiddenSubject.value = `[Portfólio Wernnon Ruiz] ${subjectSelect.value}`;
+    });
+  }
+
+  // 4. Manipulador de envio com fallbacks resilientes
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -781,9 +814,16 @@ function initContactForm() {
     const message = document.getElementById("input-message")?.value.trim() || "";
 
     if (!name || !email || !message) {
-      showContactStatus("Por favor, preencha todos os campos obrigatórios.", "error");
+      showContactStatusHtml("Por favor, preencha todos os campos obrigatórios (*).", "error");
       return;
     }
+
+    // Links de fallback pré-preenchidos imediatos
+    const emailSubjectEncoded = encodeURIComponent(`[Portfólio Wernnon Ruiz] ${subject}: ${name}`);
+    const emailBodyEncoded = encodeURIComponent(`Nome: ${name}\nE-mail: ${email}\nAssunto: ${subject}\n\nMensagem:\n${message}`);
+    const mailtoUrl = `mailto:ruizwernnon@gmail.com?subject=${emailSubjectEncoded}&body=${emailBodyEncoded}`;
+    const waTextEncoded = encodeURIComponent(`Olá Wernnon, meu nome é ${name} (${email}). Entro em contato sobre "${subject}":\n\n${message}`);
+    const whatsappUrl = `https://wa.me/5569992473397?text=${waTextEncoded}`;
 
     if (submitBtn) {
       submitBtn.disabled = true;
@@ -791,8 +831,32 @@ function initContactForm() {
     }
     if (statusMsg) statusMsg.classList.add("hidden");
 
+    // Caso a página esteja aberta diretamente via file:/// (sem servidor web)
+    if (window.location.protocol === "file:") {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Enviar Mensagem Direta";
+      }
+      showContactStatusHtml(`
+        <div class="space-y-3">
+          <p class="font-bold text-amber-400">⚠️ Modo Local (Arquivo Offline Detectado)</p>
+          <p class="text-white-dim text-[11px] leading-relaxed">
+            Navegadores bloqueiam requisições AJAX externas ao abrir arquivos diretamente via <code>file:///</code>. Escolha uma das opções imediatas abaixo para enviar:
+          </p>
+          <div class="flex flex-wrap items-center gap-2 pt-1">
+            <a href="${mailtoUrl}" class="px-3.5 py-1.5 bg-gold text-black font-semibold text-[11px] uppercase tracking-wider hover:bg-white transition-colors">
+              Abrir no seu E-mail (Gmail/Outlook) ↗
+            </a>
+            <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-[#121212] border border-[#262626] text-white hover:border-gold hover:text-gold transition-colors text-[11px] font-mono">
+              Enviar pelo WhatsApp ↗
+            </a>
+          </div>
+        </div>
+      `, "warning");
+      return;
+    }
+
     try {
-      // Disparo direto cliente-servidor para a caixa verified de Wernnon Ruiz via FormSubmit AJAX
       const res = await fetch("https://formsubmit.co/ajax/ruizwernnon@gmail.com", {
         method: "POST",
         headers: {
@@ -805,20 +869,75 @@ function initContactForm() {
           _subject: `[Portfólio Wernnon Ruiz] ${subject}: ${name}`,
           message: message,
           _replyto: email,
-          _template: "table"
+          _template: "table",
+          _captcha: "false"
         })
       });
 
       const data = await res.json();
+      const isSuccess = data && (data.success === true || data.success === "true");
 
-      if (res.ok) {
-        showContactStatus("Mensagem despachada com sucesso. Entrarei em contato em breve.", "success");
+      if (isSuccess) {
+        showContactStatusHtml(`
+          <div class="space-y-1">
+            <p class="font-bold text-emerald-400">✓ Mensagem despachada com sucesso!</p>
+            <p class="text-white-dim text-[11px]">Seu contato foi entregue para ruizwernnon@gmail.com. Entrarei em contato em até 24h úteis.</p>
+          </div>
+        `, "success");
         form.reset();
       } else {
-        showContactStatus("Falha no envio automático. Clique abaixo para enviar via cliente de e-mail.", "error");
+        const msg = data?.message || "";
+        if (msg.toLowerCase().includes("activation") || msg.toLowerCase().includes("activate")) {
+          // Caso o endpoint FormSubmit esteja aguardando a ativação por e-mail de Wernnon
+          showContactStatusHtml(`
+            <div class="space-y-3">
+              <p class="font-bold text-amber-400">⚠️ Ativação Pendente no FormSubmit</p>
+              <p class="text-white-dim text-[11px] leading-relaxed">
+                O FormSubmit enviou um e-mail de verificação para <strong class="text-white">ruizwernnon@gmail.com</strong>.
+                Basta abrir seu Gmail e clicar em <span class="text-gold font-bold">"Activate Form"</span> para liberar o envio 100% automático.
+              </p>
+              <div class="pt-2 border-t border-[#262626] flex flex-wrap items-center gap-2">
+                <a href="${mailtoUrl}" class="px-3 py-1.5 bg-gold text-black font-semibold text-[11px] uppercase tracking-wider hover:bg-white transition-colors">
+                  Enviar agora por E-mail (Gmail) ↗
+                </a>
+                <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-[#121212] border border-[#262626] text-white hover:border-gold hover:text-gold transition-colors text-[11px] font-mono">
+                  Enviar via WhatsApp ↗
+                </a>
+              </div>
+            </div>
+          `, "warning");
+        } else {
+          showContactStatusHtml(`
+            <div class="space-y-2">
+              <p class="font-bold text-rose-300">Falha no envio automático (${msg || "Servidor indisponível"}).</p>
+              <p class="text-white-dim text-[11px]">Você pode encaminhar sua mensagem imediatamente pelos botões abaixo:</p>
+              <div class="flex flex-wrap items-center gap-2 pt-1">
+                <a href="${mailtoUrl}" class="px-3 py-1.5 bg-gold text-black font-semibold text-[11px] uppercase tracking-wider hover:bg-white transition-colors">
+                  Abrir no seu E-mail ↗
+                </a>
+                <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-[#121212] border border-[#262626] text-white hover:border-gold hover:text-gold transition-colors text-[11px] font-mono">
+                  Enviar via WhatsApp ↗
+                </a>
+              </div>
+            </div>
+          `, "error");
+        }
       }
     } catch {
-      showContactStatus("Falha na conexão de envio. Você pode enviar diretamente pelo botão de e-mail ao lado.", "error");
+      showContactStatusHtml(`
+        <div class="space-y-2">
+          <p class="font-bold text-rose-300">Falha de conexão com o servidor de mensagens.</p>
+          <p class="text-white-dim text-[11px]">Envie diretamente por um dos canais oficiais:</p>
+          <div class="flex flex-wrap items-center gap-2 pt-1">
+            <a href="${mailtoUrl}" class="px-3 py-1.5 bg-gold text-black font-semibold text-[11px] uppercase tracking-wider hover:bg-white transition-colors">
+              Abrir no seu E-mail ↗
+            </a>
+            <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-[#121212] border border-[#262626] text-white hover:border-gold hover:text-gold transition-colors text-[11px] font-mono">
+              Enviar via WhatsApp ↗
+            </a>
+          </div>
+        </div>
+      `, "error");
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
@@ -828,17 +947,19 @@ function initContactForm() {
   });
 }
 
-function showContactStatus(text, type) {
+function showContactStatusHtml(html, type) {
   const statusMsg = document.getElementById("contact-status-msg");
   if (!statusMsg) return;
 
   statusMsg.classList.remove("hidden");
   if (type === "success") {
     statusMsg.className = "p-4 border border-emerald-500/40 bg-emerald-950/20 text-xs font-mono text-emerald-400";
+  } else if (type === "warning") {
+    statusMsg.className = "p-4 border border-amber-500/40 bg-amber-950/20 text-xs font-mono text-amber-300";
   } else {
     statusMsg.className = "p-4 border border-rose-500/40 bg-rose-950/20 text-xs font-mono text-rose-300";
   }
-  statusMsg.textContent = text;
+  statusMsg.innerHTML = html;
 }
 
 // ==========================================

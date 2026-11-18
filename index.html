@@ -698,7 +698,18 @@
               Preencha os dados abaixo para receber uma análise técnica preliminar da sua demanda.
             </p>
 
-            <form id="contact-direct-form" class="space-y-6 text-xs">
+            <form
+              id="contact-direct-form"
+              action="https://formsubmit.co/ruizwernnon@gmail.com"
+              method="POST"
+              class="space-y-6 text-xs"
+            >
+              <!-- FormSubmit Configuration -->
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_subject" id="hidden-email-subject" value="[Portfólio Wernnon Ruiz] Contato Profissional">
+              <input type="hidden" name="_next" id="form-redirect-next" value="">
+
               <div id="contact-status-msg" class="hidden"></div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -709,6 +720,7 @@
                   <input
                     type="text"
                     id="input-name"
+                    name="name"
                     required
                     placeholder="Seu nome ou razão social"
                     class="w-full bg-black border border-[#262626] px-4 py-3 text-white placeholder-white-dim/40 focus:border-gold focus:outline-none font-mono"
@@ -721,6 +733,7 @@
                   <input
                     type="email"
                     id="input-email"
+                    name="email"
                     required
                     placeholder="seu.email@dominio.com"
                     class="w-full bg-black border border-[#262626] px-4 py-3 text-white placeholder-white-dim/40 focus:border-gold focus:outline-none font-mono"
@@ -734,6 +747,7 @@
                 </label>
                 <select
                   id="input-subject"
+                  name="subject"
                   class="w-full bg-black border border-[#262626] px-4 py-3 text-white focus:border-gold focus:outline-none font-mono"
                 >
                   <option value="Desenvolvimento de Projeto ou Consultoria">Desenvolvimento de Projeto ou Consultoria</option>
@@ -750,6 +764,7 @@
                 </label>
                 <textarea
                   id="input-message"
+                  name="message"
                   required
                   rows="5"
                   placeholder="Descreva o objetivo do software, público estimado, integrações necessárias ou prazos previstos..."
