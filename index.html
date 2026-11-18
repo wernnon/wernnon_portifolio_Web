@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wernnon Ruiz • Engenharia de Software e Arquitetura de Sistemas</title>
+  <meta name="description" content="Portfólio de engenharia de software de Wernnon Ruiz. Arquitetura de sistemas em produção, plataformas corporativas e ferramentas desktop locais para IA.">
+  <meta name="author" content="Wernnon Ruiz">
+
+  <!-- Favicons -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-icon.png">
+
+  <!-- Google Fonts: JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <!-- Compiled Standalone CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#0A0A0A] text-white font-mono antialiased selection:bg-gold selection:text-black min-h-screen">
+
+  <!-- ========================================== -->
+  <!-- 00. CABEÇALHO E NAVEGAÇÃO SUPERIOR         -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-40 bg-[#0A0A0A] border-b border-[#262626]">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Brand -->
+      <a href="#sobre" class="flex items-center gap-3 group">
+        <div class="w-8 h-8 rounded border border-gold/40 bg-burgundy-deep flex items-center justify-center p-1 group-hover:border-gold transition-colors">
+          <img
+            src="assets/images/welyz-signature-cropped.png"
+            alt="Wernnon Ruiz"
+            class="w-full h-full object-contain"
+          >
+        </div>
+        <span class="text-sm font-semibold tracking-tight text-white group-hover:text-gold transition-colors">
+          Wernnon Ruiz
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#sobre" class="text-xs uppercase tracking-wider text-white-dim hover:text-gold transition-colors">Sobre</a>
+        <a href="#projetos" class="text-xs uppercase tracking-wider text-white-dim hover:text-gold transition-colors">Projetos</a>
+        <a href="#competencias" class="text-xs uppercase tracking-wider text-white-dim hover:text-gold transition-colors">Competências</a>
+        <a href="#ferramental" class="text-xs uppercase tracking-wider text-white-dim hover:text-gold transition-colors">Ferramental</a>
+        <a href="#contato" class="text-xs uppercase tracking-wider text-white-dim hover:text-gold transition-colors">Contato</a>
+      </nav>
+
+      <!-- Desktop CTA Button -->
+      <div class="hidden md:flex items-center">
+        <a
+          href="#contato"
+          class="px-4 py-2 text-xs uppercase tracking-wider font-medium text-black bg-gold hover:bg-gold-hover rounded-none transition-colors"
+        >
+          Falar com Wernnon
+        </a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button
+        type="button"
+        id="mobile-menu-toggle"
+        class="md:hidden text-xs uppercase tracking-wider text-gold"
+        aria-label="Abrir menu"
+      >
+        Menu
+      </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu-drawer" class="hidden md:hidden bg-[#0A0A0A] border-b border-[#262626] px-6 py-6 flex flex-col gap-4">
+      <a href="#sobre" class="text-sm text-white-muted hover:text-gold py-1">Sobre</a>
+      <a href="#projetos" class="text-sm text-white-muted hover:text-gold py-1">Projetos</a>
+      <a href="#competencias" class="text-sm text-white-muted hover:text-gold py-1">Competências</a>
+      <a href="#ferramental" class="text-sm text-white-muted hover:text-gold py-1">Ferramental</a>
+      <a href="#contato" class="text-sm text-white-muted hover:text-gold py-1">Contato</a>
+      <a
+        href="#contato"
+        class="mt-2 py-2.5 text-center text-xs uppercase tracking-wider text-black bg-gold font-medium"
+      >
+        Falar com Wernnon
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================== -->
+    <!-- 01. HERO / APRESENTAÇÃO E DIRETRIZ        -->
+    <!-- ========================================== -->
+    <section
+      id="sobre"
+      class="relative py-24 sm:py-32 bg-[#0A0A0A] border-b border-[#262626] overflow-hidden"
+      style="background-image: url('assets/images/hero-bg-editorial-pattern.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+    >
+      <!-- Editorial subtle contrast veil to guarantee AAA text legibility -->
+      <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/25 pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <!-- Main Editorial Text (8 cols) -->
+          <div class="lg:col-span-8 space-y-8">
+            <p class="text-xs font-mono uppercase tracking-widest text-gold">
+              01 / Apresentação e Diretriz
+            </p>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
+              Engenharia de software, arquitetura de sistemas e produtos digitais.
+            </h1>
+
+            <p class="text-lg text-white leading-relaxed max-w-2xl font-normal drop-shadow-sm font-sans">
+              Meu nome é Wernnon Ruiz. Atuo na concepção, arquitetura e entrega de sistemas
+              computacionais de ponta a ponta. Minha prática abrange desde plataformas de gestão
+              socioesportiva em escala municipal e sistemas comerciais de alta concorrência até
+              ferramental desktop para auditoria de código e inteligência artificial local.
+            </p>
+
+            <div class="pt-4 flex flex-wrap items-center gap-6 text-xs font-mono text-white-dim border-t border-white/15">
+              <div>
+                <span class="text-white block font-sans font-semibold">Localização</span>
+                <span>Porto Velho, Rondônia</span>
+              </div>
+              <div>
+                <span class="text-white block font-sans font-semibold">Foco</span>
+                <span>Sistemas de Produção e Ferramental</span>
+              </div>
+              <div>
+                <span class="text-white block font-sans font-semibold">Atuação</span>
+                <span>Remoto e Presencial</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Logo & Text directly over the pattern (4 cols) -->
+          <div class="lg:col-span-4 flex flex-col justify-between h-full space-y-8">
+            <div class="p-4 sm:p-6 flex flex-col items-center justify-center text-center">
+              <div class="w-full max-w-[240px] mb-4">
+                <img
+                  src="assets/images/welyz-signature-cropped.png"
+                  alt="Assinatura Autoral Wernnon Ruiz"
+                  class="w-full h-auto object-contain mx-auto filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]"
+                >
+              </div>
+              <p class="text-xs font-mono uppercase tracking-widest text-gold font-semibold">
+                Wernnon Ruiz
+              </p>
+              <p class="text-xs text-white/80 mt-1 font-sans">
+                Marca Autoral • Estúdio de Engenharia
+              </p>
+            </div>
+
+            <!-- Engineering Standard Note -->
+            <div class="border border-[#333333] p-6 bg-black/80 backdrop-blur-sm text-xs text-white-dim leading-relaxed space-y-2">
+              <p class="text-white font-medium text-xs font-mono uppercase tracking-wider">
+                Critério de Engenharia
+              </p>
+              <p class="font-sans">
+                Prioridade à estabilidade de banco relacional, contratos de dados estritos via Zod,
+                trilhas forenses imutáveis e respeito total à privacidade de dados segundo a LGPD.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 02. PROJETOS EM PRODUÇÃO                   -->
+    <!-- ========================================== -->
+    <section id="projetos" class="py-20 sm:py-28 bg-[#0A0A0A] border-b border-[#262626]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="mb-10">
+          <p class="text-xs font-mono uppercase tracking-widest text-gold mb-2">
+            02 / Projetos em Produção
+          </p>
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white max-w-2xl">
+                Soluções digitais entregues e operacionais.
+              </h2>
+              <p class="text-xs sm:text-sm text-white-dim mt-2 max-w-2xl leading-relaxed font-sans">
+                Aplicações desenvolvidas para atender demandas reais nos setores público, corporativo e técnico.
+                Alterne entre os projetos para inspecionar interfaces autênticas e expectativas de desempenho.
+              </p>
+            </div>
+
+            <!-- Quick Pager Controls (Header) -->
+            <div class="flex items-center gap-2 self-start md:self-auto shrink-0 font-mono text-xs">
+              <span id="project-counter-text" class="text-white-dim mr-2">
+                Projeto <span class="text-gold font-bold">01</span> / 05
+              </span>
+              <button
+                type="button"
+                class="btn-prev-project px-3 py-1.5 border border-[#262626] bg-[#121212] text-white-dim hover:text-white hover:border-gold transition-colors flex items-center gap-1"
+                title="Projeto Anterior"
+              >
+                <span>←</span>
+                <span class="hidden sm:inline">Anterior</span>
+              </button>
+              <button
+                type="button"
+                class="btn-next-project px-3 py-1.5 border border-[#262626] bg-[#121212] text-white-dim hover:text-white hover:border-gold transition-colors flex items-center gap-1"
+                title="Próximo Projeto"
+              >
+                <span class="hidden sm:inline">Próximo</span>
+                <span>→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Persistent Project Selector Bar -->
+        <div id="project-selector-tabs" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 pb-6 border-b border-[#262626] mb-8">
+          <!-- Renderizado dinamicamente via script.js -->
+        </div>
+
+        <!-- Main Balanced Split View: Details (Left) + Visual Showcase (Right) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <!-- Left Column: Project Overview, Metrics & Engineering (lg:col-span-5) -->
+          <div class="lg:col-span-5 space-y-6">
+            <!-- Title & Scope -->
+            <div>
+              <div id="project-meta-category" class="flex items-center gap-2 text-[11px] font-mono text-gold mb-1">
+                <span>Governança Pública</span>
+                <span>•</span>
+                <span>2025 - Atual</span>
+              </div>
+              <h3 id="project-title" class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                Construindo Campeões
+              </h3>
+              <p class="text-xs font-mono text-white-dim mt-1">
+                Escopo: <span id="project-scope" class="text-white-muted">Prefeitura Municipal de Porto Velho / SEMTEL</span>
+              </p>
+              <p id="project-summary" class="text-xs sm:text-sm text-white-muted mt-3 leading-relaxed font-sans">
+                Carregando sumário executivo...
+              </p>
+
+              <!-- External Project URL & Repo Action Buttons -->
+              <div id="project-external-links" class="flex flex-wrap items-center gap-2.5 mt-4 pt-3 border-t border-[#262626]" style="display: none;">
+                <!-- Links renderizados dinamicamente caso o projeto possua -->
+              </div>
+            </div>
+
+            <!-- Performance Expectation Metrics (2x2 Grid) -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-gold font-semibold">
+                  Expectativas de Desempenho & Impacto
+                </span>
+                <span class="text-[10px] font-mono text-white-dim">
+                  Estimativas Projetadas
+                </span>
+              </div>
+              <div id="project-metrics-grid" class="grid grid-cols-2 gap-2.5">
+                <!-- Injetado dinamicamente via script.js -->
+              </div>
+            </div>
+
+            <!-- Operational Challenge & Engineering Solution -->
+            <div class="space-y-4 pt-2 border-t border-[#262626]">
+              <div>
+                <h4 class="text-[11px] font-mono uppercase tracking-wider text-gold font-semibold mb-1">
+                  Desafio Operacional
+                </h4>
+                <p id="project-problem" class="text-xs text-white-dim leading-relaxed font-sans">
+                  Carregando desafio...
+                </p>
+              </div>
+              <div>
+                <h4 class="text-[11px] font-mono uppercase tracking-wider text-gold font-semibold mb-1">
+                  Solução de Engenharia
+                </h4>
+                <p id="project-solution" class="text-xs text-white-dim leading-relaxed font-sans">
+                  Carregando solução...
+                </p>
+              </div>
+            </div>
+
+            <!-- Tech Stack Chips -->
+            <div class="pt-2">
+              <span class="text-[10px] font-mono text-white-dim block mb-2 uppercase tracking-wider">
+                Tecnologias Utilizadas
+              </span>
+              <div id="project-tech-stack" class="flex flex-wrap gap-1.5">
+                <!-- Chips injetados dinamicamente via script.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Visual Showcase & Screenshots (lg:col-span-7) -->
+          <div class="lg:col-span-7 space-y-4">
+            <div id="project-visual-showcase">
+              <!-- Showcase visual ou fluxo cívico interativo renderizado via script.js -->
+            </div>
+
+            <!-- Bottom Quick Switcher Navigation -->
+            <div class="flex items-center justify-between pt-4 border-t border-[#262626] font-mono text-xs">
+              <button
+                type="button"
+                class="btn-prev-project text-white-dim hover:text-gold transition-colors flex items-center gap-1.5"
+              >
+                <span>←</span>
+                <span>Anterior: <span id="bottom-prev-project-name">Projeto Anterior</span></span>
+              </button>
+              <button
+                type="button"
+                class="btn-next-project text-white-dim hover:text-gold transition-colors flex items-center gap-1.5"
+              >
+                <span>Próximo: <span id="bottom-next-project-name">Próximo Projeto</span></span>
+                <span>→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 03. COMPETÊNCIAS E PRÁTICAS               -->
+    <!-- ========================================== -->
+    <section id="competencias" class="py-24 sm:py-32 bg-[#0A0A0A] border-b border-[#262626]">
+      <div class="max-w-6xl mx-auto px-6">
+        <!-- Editorial Section Header -->
+        <div class="mb-16">
+          <p class="text-xs font-mono uppercase tracking-widest text-gold mb-3">
+            03 / Competências e Práticas
+          </p>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white max-w-2xl">
+            Fundamentos técnicos e padrões arquiteturais.
+          </h2>
+          <p class="text-sm text-white-dim mt-3 max-w-2xl leading-relaxed font-sans">
+            Estrutura de desenvolvimento focada em previsibilidade de execução, manutenibilidade
+            e conformidade com padrões de mercado.
+          </p>
+        </div>
+
+        <!-- 4 Technical Areas Grid com Animação de 10% no Hover -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <!-- Área 01 -->
+          <div class="border border-[#262626] bg-[#121212] p-6 space-y-4 transition-all duration-300 ease-out hover:scale-[1.10] hover:z-20 relative hover:border-gold hover:shadow-2xl hover:shadow-black/80 group cursor-default">
+            <span class="text-[10px] font-mono uppercase text-gold block group-hover:tracking-wider transition-all">
+              Área 01
+            </span>
+            <h3 class="text-base font-semibold text-white group-hover:text-gold transition-colors">
+              Frontend e Web
+            </h3>
+            <p class="text-xs text-white-dim leading-relaxed font-sans">
+              Interfaces com foco em velocidade de renderização, controle de estado e acessibilidade.
+            </p>
+            <ul class="pt-2 border-t border-[#262626] space-y-1.5 text-xs font-mono text-white-muted">
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>Next.js 14 (App Router)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>React 18</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>TypeScript</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>Tailwind CSS</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Área 02 -->
+          <div class="border border-[#262626] bg-[#121212] p-6 space-y-4 transition-all duration-300 ease-out hover:scale-[1.10] hover:z-20 relative hover:border-gold hover:shadow-2xl hover:shadow-black/80 group cursor-default">
+            <span class="text-[10px] font-mono uppercase text-gold block group-hover:tracking-wider transition-all">
+              Área 02
+            </span>
+            <h3 class="text-base font-semibold text-white group-hover:text-gold transition-colors">
+              Backend e APIs
+            </h3>
+            <p class="text-xs text-white-dim leading-relaxed font-sans">
+              Serviços de baixo overhead com contratos estritos de entrada e saída validados em tempo de execução.
+            </p>
+            <ul class="pt-2 border-t border-[#262626] space-y-1.5 text-xs font-mono text-white-muted">
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>Node.js 20 LTS</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>Fastify 4</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>Express REST</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>Zod</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Área 03 -->
+          <div class="border border-[#262626] bg-[#121212] p-6 space-y-4 transition-all duration-300 ease-out hover:scale-[1.10] hover:z-20 relative hover:border-gold hover:shadow-2xl hover:shadow-black/80 group cursor-default">
+            <span class="text-[10px] font-mono uppercase text-gold block group-hover:tracking-wider transition-all">
+              Área 03
+            </span>
+            <h3 class="text-base font-semibold text-white group-hover:text-gold transition-colors">
+              Desktop e Ferramental Local
+            </h3>
+            <p class="text-xs text-white-dim leading-relaxed font-sans">
+              Estações de trabalho locais com processamento in-memory e isolamento rigoroso de segredos.
+            </p>
+            <ul class="pt-2 border-t border-[#262626] space-y-1.5 text-xs font-mono text-white-muted">
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>Electron 28+</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>Node.js fs nativo</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>ContextIsolation IPC</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>AST Parsing</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Área 04 -->
+          <div class="border border-[#262626] bg-[#121212] p-6 space-y-4 transition-all duration-300 ease-out hover:scale-[1.10] hover:z-20 relative hover:border-gold hover:shadow-2xl hover:shadow-black/80 group cursor-default">
+            <span class="text-[10px] font-mono uppercase text-gold block group-hover:tracking-wider transition-all">
+              Área 04
+            </span>
+            <h3 class="text-base font-semibold text-white group-hover:text-gold transition-colors">
+              Bancos de Dados e Persistência
+            </h3>
+            <p class="text-xs text-white-dim leading-relaxed font-sans">
+              Modelagem relacional, pooling de conexões e desacoplamento via Repository Pattern.
+            </p>
+            <ul class="pt-2 border-t border-[#262626] space-y-1.5 text-xs font-mono text-white-muted">
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>PostgreSQL</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>Prisma ORM (Adapter-pg)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>SQLite</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1 h-1 bg-gold rounded-full group-hover:scale-125 transition-transform"></span>
+                <span>Firebase Firestore</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Architectural Practices Row -->
+        <div class="border-t border-[#262626] pt-12">
+          <h3 class="text-xs font-mono uppercase tracking-widest text-gold mb-8 font-semibold">
+            Padrões Arquiteturais Aplicados em Produção
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-2 border-l border-gold/40 pl-4">
+              <h4 class="text-sm font-semibold text-white">Trilhas Forenses Imutáveis</h4>
+              <p class="text-xs text-white-dim leading-relaxed font-sans">
+                Registro sistemático de operações com snapshots anteriores, payload modificado (JSON Diff), IP e identificador de correlação.
+              </p>
+            </div>
+            <div class="space-y-2 border-l border-gold/40 pl-4">
+              <h4 class="text-sm font-semibold text-white">Validação Matemática de Conflitos</h4>
+              <p class="text-xs text-white-dim leading-relaxed font-sans">
+                Algoritmos de interseção temporal (startA &lt; endB e endA &gt; startB) executados com integridade relacional para prevenir sobreposições.
+              </p>
+            </div>
+            <div class="space-y-2 border-l border-gold/40 pl-4">
+              <h4 class="text-sm font-semibold text-white">Higienização de Código e IA Local</h4>
+              <p class="text-xs text-white-dim leading-relaxed font-sans">
+                Processamento de tokens e compilação de contexto sem transmissão de credenciais (.env) ou binários para servidores externos.
+              </p>
+            </div>
+            <div class="space-y-2 border-l border-gold/40 pl-4">
+              <h4 class="text-sm font-semibold text-white">Controle de Acesso Granular (RBAC)</h4>
+              <p class="text-xs text-white-dim leading-relaxed font-sans">
+                Hierarquia de permissões com tokens JWT tipados para administração, gerência, instrutores e usuários comuns.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 04. FERRAMENTAL DE DESENVOLVIMENTO         -->
+    <!-- ========================================== -->
+    <section id="ferramental" class="py-24 sm:py-32 bg-[#0A0A0A] border-b border-[#262626]">
+      <div class="max-w-6xl mx-auto px-6">
+        <!-- Editorial Section Header -->
+        <div class="mb-16">
+          <p class="text-xs font-mono uppercase tracking-widest text-gold mb-3">
+            04 / Ferramental de Desenvolvimento
+          </p>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white max-w-2xl">
+            Dev Automation Kit em funcionamento.
+          </h2>
+          <p class="text-sm text-white-dim mt-3 max-w-2xl leading-relaxed font-sans">
+            Utilitário desktop criado para resolver o gargalo de compilação de contexto para modelos de IA.
+            A ferramenta sanitiza credenciais e calcula tokens de forma local e offline.
+          </p>
+        </div>
+
+        <!-- Workstation Frame -->
+        <div class="border border-[#262626] bg-[#121212]">
+          <!-- Header Bar -->
+          <div class="border-b border-[#262626] px-6 py-4 flex flex-wrap items-center justify-between gap-4 bg-black">
+            <div class="flex items-center gap-3">
+              <span class="w-2.5 h-2.5 bg-gold rounded-full"></span>
+              <span class="text-xs font-mono font-semibold text-white">
+                Dev Automation Kit v0.1.4-alpha
+              </span>
+            </div>
+            <span class="text-xs font-mono text-white-dim">
+              Repositório ativo: <span class="text-gold">construindo-campeoes</span>
+            </span>
+          </div>
+
+          <div class="p-6 sm:p-8 space-y-8">
+            <!-- Counters Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 border-b border-[#262626] pb-8">
+              <div>
+                <span class="text-xs font-mono text-white-dim block uppercase">Arquivos Selecionados</span>
+                <span id="lab-counter-files" class="text-2xl font-mono font-bold text-white mt-1 block">
+                  11 <span class="text-xs font-normal text-white-dim">/ 590</span>
+                </span>
+              </div>
+              <div>
+                <span class="text-xs font-mono text-white-dim block uppercase">Volume de Texto</span>
+                <span id="lab-counter-volume" class="text-2xl font-mono font-bold text-white mt-1 block">
+                  4.35 MB
+                </span>
+              </div>
+              <div>
+                <span class="text-xs font-mono text-white-dim block uppercase">Tokens Estimados</span>
+                <span id="lab-counter-tokens" class="text-2xl font-mono font-bold text-gold mt-1 block">
+                  ~531.018
+                </span>
+              </div>
+              <div>
+                <span class="text-xs font-mono text-white-dim block uppercase">Isolamento de Segredos</span>
+                <span class="text-2xl font-mono font-bold text-white mt-1 block">
+                  100% Local
+                </span>
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+              <div class="flex items-center gap-3 text-xs font-mono text-white-dim">
+                <span>Modo de empacotamento:</span>
+                <span class="px-3 py-1.5 bg-black border border-[#262626] text-white">
+                  Dividir por Módulos (--by-folder)
+                </span>
+              </div>
+
+              <button
+                type="button"
+                id="btn-generate-context"
+                class="px-6 py-2.5 bg-gold hover:bg-gold-hover text-black text-xs font-mono uppercase font-semibold transition-colors disabled:opacity-50"
+              >
+                Gerar Contexto
+              </button>
+            </div>
+
+            <!-- Success Status Box -->
+            <div id="lab-status-box" class="p-4 border border-gold/40 bg-[#180407] text-xs font-mono flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <span class="text-white">
+                Contexto compilado com sucesso. Salvo em: <span class="text-gold">gerados/construindo-campeoes/</span>
+              </span>
+              <span class="text-gold font-semibold">2 arquivos gerados</span>
+            </div>
+
+            <!-- Directory Selection Tree -->
+            <div class="border border-[#262626] bg-black p-4 font-mono text-xs">
+              <div class="pb-3 border-b border-[#262626] mb-3 flex items-center justify-between text-white-dim">
+                <span>Árvore de Diretórios</span>
+                <span id="lab-tree-marked-count">11 itens marcados</span>
+              </div>
+
+              <div id="lab-tree-container" class="space-y-2">
+                <!-- Injetado dinamicamente via script.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 05. CONTATO E CONEXÃO PROFISSIONAL         -->
+    <!-- ========================================== -->
+    <section id="contato" class="py-24 sm:py-32 bg-[#0A0A0A] border-b border-[#262626]">
+      <div class="max-w-6xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="mb-16">
+          <p class="text-xs font-mono uppercase tracking-widest text-gold mb-3">
+            05 / Contato e Conexão Profissional
+          </p>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white max-w-2xl">
+            Inicie uma conversa direta.
+          </h2>
+          <p class="text-sm text-white-dim mt-3 max-w-2xl leading-relaxed font-sans">
+            Disponível para novos projetos de software, liderança técnica e consultoria em arquitetura de sistemas.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <!-- Direct Channels (5 cols) -->
+          <div class="lg:col-span-5 space-y-8">
+            <div class="space-y-6 text-sm">
+              <!-- WhatsApp -->
+              <div class="border border-[#262626] bg-[#121212] p-5 space-y-2">
+                <span class="text-[10px] font-mono text-gold uppercase tracking-wider block">Canal Imediato</span>
+                <p class="text-white font-semibold">WhatsApp Profissional</p>
+                <p class="text-xs text-white-dim font-sans">Para propostas, alinhamentos ágeis e demandas emergenciais.</p>
+                <a
+                  href="https://wa.me/5569992473397"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-xs font-mono text-gold hover:underline pt-1"
+                >
+                  <span>+55 (69) 99247-3397</span>
+                  <span>↗</span>
+                </a>
+              </div>
+
+              <!-- E-mail -->
+              <div class="border border-[#262626] bg-[#121212] p-5 space-y-2">
+                <span class="text-[10px] font-mono text-gold uppercase tracking-wider block">Correspondência Direta</span>
+                <p class="text-white font-semibold">E-mail Corporativo</p>
+                <p class="text-xs text-white-dim font-sans">Envio de briefing, documentação técnica e propostas contratuais.</p>
+                <a
+                  href="mailto:ruizwernnon@gmail.com"
+                  class="inline-flex items-center gap-2 text-xs font-mono text-gold hover:underline pt-1"
+                >
+                  <span>ruizwernnon@gmail.com</span>
+                  <span>↗</span>
+                </a>
+              </div>
+
+              <!-- GitHub & LinkedIn -->
+              <div class="grid grid-cols-2 gap-4">
+                <a
+                  href="https://github.com/wernnon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="border border-[#262626] bg-[#121212] p-4 space-y-1 hover:border-gold transition-colors block group"
+                >
+                  <span class="text-[10px] font-mono text-white-dim uppercase block">Repositórios</span>
+                  <span class="text-xs font-semibold text-white group-hover:text-gold block">GitHub ↗</span>
+                  <span class="text-[11px] text-white-dim block">/wernnon</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/wernnon-ruiz-ba097b254/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="border border-[#262626] bg-[#121212] p-4 space-y-1 hover:border-gold transition-colors block group"
+                >
+                  <span class="text-[10px] font-mono text-white-dim uppercase block">Trajetória</span>
+                  <span class="text-xs font-semibold text-white group-hover:text-gold block">LinkedIn ↗</span>
+                  <span class="text-[11px] text-white-dim block">/wernnon-ruiz</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Operating Terms -->
+            <div class="border-t border-[#262626] pt-6 space-y-2 text-xs text-white-dim font-sans">
+              <p class="text-white font-mono uppercase tracking-wider text-[11px]">Disponibilidade de Atuação</p>
+              <p>Rondônia (Horário de Porto Velho, UTC-4). Atendimento em todo território nacional via remoto ou missões técnicas pontuais.</p>
+            </div>
+          </div>
+
+          <!-- Direct Form (7 cols) -->
+          <div class="lg:col-span-7 border border-[#262626] bg-[#121212] p-8 sm:p-10">
+            <h3 class="text-base font-semibold text-white mb-2">
+              Formulário de Mensagem Direta
+            </h3>
+            <p class="text-xs text-white-dim mb-8 font-sans">
+              Preencha os dados abaixo para receber uma análise técnica preliminar da sua demanda.
+            </p>
+
+            <form id="contact-direct-form" class="space-y-6 text-xs">
+              <div id="contact-status-msg" class="hidden"></div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label for="input-name" class="font-mono uppercase text-white-dim block text-[11px]">
+                    Nome ou Empresa *
+                  </label>
+                  <input
+                    type="text"
+                    id="input-name"
+                    required
+                    placeholder="Seu nome ou razão social"
+                    class="w-full bg-black border border-[#262626] px-4 py-3 text-white placeholder-white-dim/40 focus:border-gold focus:outline-none font-mono"
+                  >
+                </div>
+                <div class="space-y-2">
+                  <label for="input-email" class="font-mono uppercase text-white-dim block text-[11px]">
+                    E-mail para Retorno *
+                  </label>
+                  <input
+                    type="email"
+                    id="input-email"
+                    required
+                    placeholder="seu.email@dominio.com"
+                    class="w-full bg-black border border-[#262626] px-4 py-3 text-white placeholder-white-dim/40 focus:border-gold focus:outline-none font-mono"
+                  >
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <label for="input-subject" class="font-mono uppercase text-white-dim block text-[11px]">
+                  Assunto da Demanda
+                </label>
+                <select
+                  id="input-subject"
+                  class="w-full bg-black border border-[#262626] px-4 py-3 text-white focus:border-gold focus:outline-none font-mono"
+                >
+                  <option value="Desenvolvimento de Projeto ou Consultoria">Desenvolvimento de Projeto ou Consultoria</option>
+                  <option value="Arquitetura de Backend e APIs">Arquitetura de Backend e APIs</option>
+                  <option value="Ferramental de Auditoria ou IA Local">Ferramental de Auditoria ou IA Local</option>
+                  <option value="Plataformas Governamentais ou SaaS">Plataformas Governamentais ou SaaS</option>
+                  <option value="Outro Assunto">Outro Assunto</option>
+                </select>
+              </div>
+
+              <div class="space-y-2">
+                <label for="input-message" class="font-mono uppercase text-white-dim block text-[11px]">
+                  Detalhamento da Demanda ou Escopo *
+                </label>
+                <textarea
+                  id="input-message"
+                  required
+                  rows="5"
+                  placeholder="Descreva o objetivo do software, público estimado, integrações necessárias ou prazos previstos..."
+                  class="w-full bg-black border border-[#262626] px-4 py-3 text-white placeholder-white-dim/40 focus:border-gold focus:outline-none font-mono resize-none"
+                ></textarea>
+              </div>
+
+              <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                <button
+                  type="submit"
+                  id="contact-submit-btn"
+                  class="px-8 py-3 bg-gold hover:bg-gold-hover text-black font-mono font-semibold uppercase text-xs tracking-wider transition-colors disabled:opacity-50"
+                >
+                  Enviar Mensagem Direta
+                </button>
+                <span class="text-[11px] text-white-dim font-mono">
+                  Envio criptografado • Resposta em até 24h úteis
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- RODAPÉ INSTITUCIONAL                       -->
+  <!-- ========================================== -->
+  <footer class="bg-black border-t border-[#262626] py-16">
+    <div class="max-w-6xl mx-auto px-6 space-y-12">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b border-[#262626]">
+        <!-- Brand -->
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded border border-gold/40 bg-burgundy-deep flex items-center justify-center p-1">
+            <img
+              src="assets/images/welyz-signature-cropped.png"
+              alt="Wernnon Ruiz"
+              class="w-full h-full object-contain"
+            >
+          </div>
+          <div>
+            <span class="text-sm font-semibold text-white block">Wernnon Ruiz</span>
+            <span class="text-xs text-white-dim block">Engenharia de Software e Arquitetura de Sistemas</span>
+          </div>
+        </div>
+
+        <!-- Nav Links -->
+        <div class="flex flex-wrap items-center gap-6 text-xs uppercase tracking-wider text-white-dim font-mono">
+          <a href="#sobre" class="hover:text-gold transition-colors">Sobre</a>
+          <a href="#projetos" class="hover:text-gold transition-colors">Projetos</a>
+          <a href="#competencias" class="hover:text-gold transition-colors">Competências</a>
+          <a href="#ferramental" class="hover:text-gold transition-colors">Ferramental</a>
+          <a href="#contato" class="hover:text-gold transition-colors">Contato</a>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-4 text-xs font-mono">
+          <button
+            type="button"
+            id="footer-cookie-btn"
+            class="px-3 py-1.5 border border-[#262626] text-white-dim hover:text-gold hover:border-gold transition-colors"
+          >
+            Cookies
+          </button>
+          <button
+            type="button"
+            onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+            class="px-3 py-1.5 border border-[#262626] text-white-dim hover:text-gold hover:border-gold transition-colors"
+          >
+            Topo ↑
+          </button>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-white-dim font-sans">
+        <p>© 2026 Wernnon Ruiz. Todos os direitos reservados.</p>
+        <p class="text-[11px] font-mono text-white-dim/60">
+          Interfaces e marcas de projetos municipais e corporativos exibidas sob critérios de portfólio de engenharia e prestação de serviço técnico.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- MODAL LIGHTBOX PARA INSPEÇÃO DE IMAGENS    -->
+  <!-- ========================================== -->
+  <div
+    id="lightbox-modal"
+    class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-4 sm:p-8 hidden"
+  >
+    <!-- Modal Header -->
+    <div class="flex items-center justify-between border-b border-[#262626] pb-4 mb-4">
+      <div>
+        <span id="lightbox-title" class="text-sm font-semibold text-white font-mono block"></span>
+        <span class="text-xs text-gold font-mono uppercase tracking-widest">Inspeção de Alta Resolução</span>
+      </div>
+      <button
+        type="button"
+        id="lightbox-close-btn"
+        class="text-xs font-mono uppercase tracking-wider text-white-dim hover:text-white px-3 py-1.5 border border-[#262626] hover:border-gold transition-colors"
+      >
+        Fechar [✕]
+      </button>
+    </div>
+
+    <!-- Modal Content: Imagem em Tamanho Real -->
+    <div class="flex-1 flex items-center justify-center overflow-auto my-2">
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        class="max-w-full max-h-[75vh] sm:max-h-[82vh] object-contain border border-[#262626] bg-black shadow-2xl"
+      >
+    </div>
+
+    <!-- Modal Caption -->
+    <div class="border-t border-[#262626] pt-4 mt-2 max-w-4xl mx-auto w-full text-center">
+      <p id="lightbox-caption" class="text-xs text-white-dim leading-relaxed font-sans"></p>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- BANNER DE CONSENTIMENTO DE COOKIES         -->
+  <!-- ========================================== -->
+  <div
+    id="cookie-consent-banner"
+    class="fixed bottom-0 inset-x-0 z-50 bg-[#0A0A0A]/95 border-t border-[#262626] backdrop-blur-md py-4 px-6 hidden"
+  >
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono">
+      <div class="space-y-1 max-w-2xl">
+        <p class="text-white font-semibold">Privacidade e Diretrizes de Navegação</p>
+        <p class="text-white-dim font-sans">
+          Este portfólio utiliza cookies estritamente técnicos e telemetria anônima agregada para avaliar o desempenho das interfaces.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3 shrink-0">
+        <button
+          type="button"
+          id="btn-cookie-essential"
+          class="px-3.5 py-1.5 border border-[#262626] text-white-dim hover:text-white hover:border-[#404040] transition-colors"
+        >
+          Apenas Necessários
+        </button>
+        <button
+          type="button"
+          id="btn-cookie-prefs"
+          class="px-3.5 py-1.5 border border-[#262626] text-white-dim hover:text-white hover:border-[#404040] transition-colors"
+        >
+          Preferências
+        </button>
+        <button
+          type="button"
+          id="btn-cookie-accept"
+          class="px-4 py-1.5 bg-gold hover:bg-gold-hover text-black font-semibold transition-colors"
+        >
+          Aceitar Todos
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE PREFERÊNCIAS DE COOKIES -->
+  <div
+    id="cookie-modal"
+    class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden"
+  >
+    <div class="bg-[#121212] border border-[#262626] max-w-md w-full p-6 space-y-6 text-xs font-mono">
+      <div class="flex items-center justify-between border-b border-[#262626] pb-3">
+        <span class="text-sm font-semibold text-white">Preferências de Cookies</span>
+        <button type="button" id="btn-cookie-modal-close" class="text-white-dim hover:text-white">[✕]</button>
+      </div>
+
+      <div class="space-y-4">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="text-white font-semibold">Cookies Essenciais</p>
+            <p class="text-[11px] text-white-dim font-sans mt-0.5">Necessários para salvar preferências de interface e funcionamento da página.</p>
+          </div>
+          <span class="text-gold font-bold">Ativo</span>
+        </div>
+
+        <div class="flex items-start justify-between gap-4 pt-3 border-t border-[#262626]">
+          <div>
+            <p class="text-white font-semibold">Métricas Agregadas</p>
+            <p class="text-[11px] text-white-dim font-sans mt-0.5">Estatísticas anônimas de visualizações para mensurar o interesse nos projetos.</p>
+          </div>
+          <input
+            type="checkbox"
+            id="cookie-toggle-analytics"
+            checked
+            class="accent-gold w-4 h-4 mt-1"
+          >
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-[#262626] flex justify-end gap-3">
+        <button
+          type="button"
+          id="btn-cookie-modal-save"
+          class="px-4 py-2 bg-gold hover:bg-gold-hover text-black font-semibold uppercase text-[11px]"
+        >
+          Salvar Preferências
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SCRIPT VANILLA JS (100% ESTÁTICO)          -->
+  <!-- ========================================== -->
+  <script src="script.js"></script>
+</body>
+</html>

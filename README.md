@@ -1,8 +1,35 @@
-# Welyz // Portfólio Conceitual Antigravity
+# Wernnon Ruiz • Portfólio de Engenharia de Software
 
-> **Engenharia de Software de Alta Performance, Sistemas de Missão Crítica & Rigor Estético de Vanguarda.**
+> **Engenharia de Software, Arquitetura de Sistemas e Ferramental de Produção.**
 
-Este repositório contém a implementação completa do portfólio conceitual da iniciativa **Antigravity**, projetado como uma Single Page Application (SPA) em **Next.js 14**, **Tailwind CSS**, **TypeScript** e **Lucide React**, estruturada rigorosamente nos cinco atos do Plano Mestre de Execução.
+Portfólio estático profissional de **Wernnon Ruiz**, desenvolvido sob estética editorial moderna (Swiss / Modernist Design), com paleta sóbria (preto `#0A0A0A`, bordô `#2A080C`, ouro `#E4B276` e branco `#FFFFFF`), tipografia monoespaçada `JetBrains Mono` e **100% estático (sem necessidade de servidor Node.js em tempo de execução)**.
+
+---
+
+## ⚡ Como Abrir e Executar
+
+### 1. Execução Direta (Sem Node.js)
+Basta abrir o arquivo `index.html` diretamente em qualquer navegador, ou hospedar em qualquer serviço de páginas estáticas:
+- **GitHub Pages**
+- **Netlify / Vercel (Static)**
+- **Cloudflare Pages / AWS S3**
+- **Servidores Apache / Nginx / Caddy**
+
+Ou via terminal com Python:
+```bash
+python3 -m http.server 3000
+```
+E acesse `http://localhost:3000`.
+
+---
+
+## 🏛️ Estrutura dos Arquivos Estáticos
+
+- **`index.html`**: Página principal completa, semântica e acessível.
+- **`styles.css`**: Estilos compilados e otimizados com Tailwind CSS, incluindo background editorial de trevo e animações hover (+10% nos cards).
+- **`script.js`**: JavaScript Vanilla nativo com todas as funcionalidades interativas (seletor de projetos, visualizador de telas com abas, Lightbox fullscreen, simulador de terminal de IA, formulário de contato via FormSubmit AJAX e banner de cookies com localStorage).
+- **`assets/images/`**: Imagens autênticas dos 5 projetos em alta resolução, logos e assinaturas transparentes.
+- **`favicon.ico`, `icon.png`, `apple-icon.png`**: Favicons vetorizados no aspect ratio 1:1.
 
 ---
 
