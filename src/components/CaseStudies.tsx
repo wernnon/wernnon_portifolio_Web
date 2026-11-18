@@ -7,6 +7,7 @@ import { ImageLightbox } from "./ImageLightbox";
 
 export function CaseStudies() {
   const [activeId, setActiveId] = useState<string>(PROJECTS_DATA[0].id);
+  const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
   const [lightbox, setLightbox] = useState<{
     isOpen: boolean;
     src: string;
@@ -19,46 +20,95 @@ export function CaseStudies() {
     alt: "",
   });
 
-  const activeProject = PROJECTS_DATA.find((p) => p.id === activeId) || PROJECTS_DATA[0];
+  const currentIndex = PROJECTS_DATA.findIndex((p) => p.id === activeId);
+  const activeProject = PROJECTS_DATA[currentIndex] || PROJECTS_DATA[0];
+
+  const handleSelectProject = (id: string) => {
+    setActiveId(id);
+    setActiveImageIndex(0);
+  };
+
+  const handlePrevProject = () => {
+    const prevIdx = (currentIndex - 1 + PROJECTS_DATA.length) % PROJECTS_DATA.length;
+    handleSelectProject(PROJECTS_DATA[prevIdx].id);
+  };
+
+  const handleNextProject = () => {
+    const nextIdx = (currentIndex + 1) % PROJECTS_DATA.length;
+    handleSelectProject(PROJECTS_DATA[nextIdx].id);
+  };
+
+  const currentImage = activeProject.images[activeImageIndex] || activeProject.images[0];
 
   return (
-    <section id="projetos" className="py-24 sm:py-32 bg-[#0A0A0A] border-b border-[#262626]">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Editorial Section Header */}
-        <div className="mb-16">
-          <p className="text-xs font-mono uppercase tracking-widest text-gold mb-3">
+    <section id="projetos" className="py-20 sm:py-28 bg-[#0A0A0A] border-b border-[#262626]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="mb-10">
+          <p className="text-xs font-mono uppercase tracking-widest text-gold mb-2">
             02 / Projetos em Produção
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white max-w-2xl">
-            Soluções digitais entregues e operacionais.
-          </h2>
-          <p className="text-sm text-white-dim mt-3 max-w-2xl leading-relaxed">
-            Aplicações desenvolvidas para atender demandas reais nos setores público, corporativo e técnico.
-            Cada sistema é demonstrado com dados e telas autênticas de produção.
-          </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white max-w-2xl">
+                Soluções digitais entregues e operacionais.
+              </h2>
+              <p className="text-xs sm:text-sm text-white-dim mt-2 max-w-2xl leading-relaxed">
+                Aplicações desenvolvidas para atender demandas reais nos setores público, corporativo e técnico.
+                Alterne entre os projetos para inspecionar interfaces autênticas e expectativas de desempenho.
+              </p>
+            </div>
+            {/* Quick Pager Controls (Header) */}
+            <div className="flex items-center gap-2 self-start md:self-auto shrink-0 font-mono text-xs">
+              <span className="text-white-dim mr-2">
+                Projeto <span className="text-gold font-bold">0{currentIndex + 1}</span> / 0{PROJECTS_DATA.length}
+              </span>
+              <button
+                onClick={handlePrevProject}
+                className="px-3 py-1.5 border border-[#262626] bg-[#121212] text-white-dim hover:text-white hover:border-gold transition-colors flex items-center gap-1"
+                title="Projeto Anterior"
+              >
+                <span>←</span>
+                <span className="hidden sm:inline">Anterior</span>
+              </button>
+              <button
+                onClick={handleNextProject}
+                className="px-3 py-1.5 border border-[#262626] bg-[#121212] text-white-dim hover:text-white hover:border-gold transition-colors flex items-center gap-1"
+                title="Próximo Projeto"
+              >
+                <span className="hidden sm:inline">Próximo</span>
+                <span>→</span>
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* Vertical Editorial Selector (No side-scrolling, wraps cleanly) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 pb-8 border-b border-[#262626] mb-12">
+        {/* Persistent Project Selector Bar (Wrap-safe, frictionless switching) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 pb-6 border-b border-[#262626] mb-8">
           {PROJECTS_DATA.map((proj, idx) => {
             const isSelected = proj.id === activeId;
             return (
               <button
                 key={proj.id}
-                onClick={() => setActiveId(proj.id)}
-                className={`text-left p-4 transition-colors border ${
+                onClick={() => handleSelectProject(proj.id)}
+                className={`text-left p-3 sm:p-3.5 transition-all border ${
                   isSelected
-                    ? "bg-[#180407] border-gold text-white"
+                    ? "bg-[#180407] border-gold text-white shadow-sm"
                     : "bg-[#121212] border-[#262626] text-white-dim hover:text-white hover:border-[#404040]"
                 }`}
               >
-                <span className="text-[10px] font-mono block text-gold mb-1">
-                  0{idx + 1}
-                </span>
-                <span className="text-xs font-semibold block leading-snug">
+                <div className="flex items-center justify-between mb-1">
+                  <span className={`text-[10px] font-mono ${isSelected ? "text-gold font-bold" : "text-white-dim"}`}>
+                    0{idx + 1}
+                  </span>
+                  {isSelected && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                  )}
+                </div>
+                <span className="text-xs font-semibold block leading-tight truncate">
                   {proj.title}
                 </span>
-                <span className="text-[11px] text-white-dim block mt-1 font-mono">
+                <span className="text-[10px] text-white-dim block mt-0.5 font-mono truncate">
                   {proj.category}
                 </span>
               </button>
@@ -66,140 +116,257 @@ export function CaseStudies() {
           })}
         </div>
 
-        {/* Selected Project Content */}
-        <div className="space-y-12">
-          {/* Title and Scope Metadata */}
-          <div className="border-b border-[#262626] pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        {/* Main Balanced Split View: Details (Left) + Visual Showcase (Right) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          {/* Left Column: Project Overview, Metrics & Engineering (lg:col-span-5) */}
+          <div className="lg:col-span-5 space-y-6">
+            {/* Title & Scope */}
             <div>
-              <p className="text-xs font-mono uppercase text-gold">
-                {activeProject.category} • {activeProject.period}
-              </p>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
+              <div className="flex items-center gap-2 text-[11px] font-mono text-gold mb-1">
+                <span>{activeProject.category}</span>
+                <span>•</span>
+                <span>{activeProject.period}</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
                 {activeProject.title}
               </h3>
-              <p className="text-sm text-white-dim mt-2 max-w-2xl leading-relaxed">
+              <p className="text-xs font-mono text-white-dim mt-1">
+                Escopo: <span className="text-white-muted">{activeProject.clientOrScope}</span>
+              </p>
+              <p className="text-xs sm:text-sm text-white-muted mt-3 leading-relaxed">
                 {activeProject.summary}
               </p>
             </div>
-            <div className="text-left md:text-right shrink-0">
-              <span className="text-xs font-mono text-white-dim block">Escopo / Cliente</span>
-              <span className="text-xs font-semibold text-white block mt-1">
-                {activeProject.clientOrScope}
-              </span>
-            </div>
-          </div>
 
-          {/* Real Metrics Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-b border-[#262626]">
-            {activeProject.metrics.map((m, idx) => (
-              <div key={idx}>
-                <span className="text-xs font-mono text-white-dim block mb-1 uppercase tracking-wider">
-                  {m.label}
+            {/* Performance Expectation Metrics (2x2 Grid) */}
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-gold font-semibold">
+                  Expectativas de Desempenho & Impacto
                 </span>
-                <span className="text-2xl sm:text-3xl font-mono font-bold text-white block">
-                  {m.value}
-                </span>
-                {m.detail && (
-                  <span className="text-xs text-white-dim block mt-1">
-                    {m.detail}
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Two-Column Problem & Solution Editorial Text */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-sm leading-relaxed text-white-muted">
-            <div className="space-y-3">
-              <h4 className="text-xs font-mono uppercase tracking-widest text-gold font-semibold">
-                Desafio Operacional
-              </h4>
-              <p>{activeProject.problem}</p>
-            </div>
-            <div className="space-y-3">
-              <h4 className="text-xs font-mono uppercase tracking-widest text-gold font-semibold">
-                Solução de Engenharia
-              </h4>
-              <p>{activeProject.solution}</p>
-            </div>
-          </div>
-
-          {/* Real Uncropped Screenshots */}
-          {activeProject.images.length > 0 ? (
-            <div className="pt-6 space-y-6">
-              <div className="flex items-center justify-between">
-                <h4 className="text-xs font-mono uppercase tracking-widest text-gold font-semibold">
-                  Registros Visuais em Produção
-                </h4>
-                <span className="text-[11px] font-mono text-white-dim">
-                  Clique para inspecionar
+                <span className="text-[10px] font-mono text-white-dim">
+                  Estimativas Projetadas
                 </span>
               </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {activeProject.images.map((img, idx) => (
+              <div className="grid grid-cols-2 gap-2.5">
+                {activeProject.metrics.map((m, idx) => (
                   <div
                     key={idx}
-                    onClick={() =>
-                      setLightbox({
-                        isOpen: true,
-                        src: img.src,
-                        alt: img.alt,
-                        caption: img.caption,
-                        projectTitle: activeProject.title,
-                      })
-                    }
-                    className="border border-[#262626] bg-[#121212] p-2 cursor-pointer hover:border-gold transition-colors group"
+                    className="p-3 bg-[#121212] border border-[#262626] flex flex-col justify-between"
                   >
-                    <div className="overflow-hidden bg-black">
-                      <img
-                        src={img.src}
-                        alt={img.alt}
-                        className="w-full h-auto object-contain block group-hover:scale-[1.01] transition-transform"
-                      />
+                    <div>
+                      <span className="text-[10px] font-mono text-white-dim uppercase tracking-wider block mb-1 leading-tight line-clamp-1" title={m.label}>
+                        {m.label}
+                      </span>
+                      <span className="text-base sm:text-lg font-mono font-bold text-gold block leading-tight">
+                        {m.value}
+                      </span>
                     </div>
-                    <p className="text-xs text-white-dim p-3 leading-relaxed border-t border-[#262626] mt-2">
-                      {img.caption}
-                    </p>
+                    {m.detail && (
+                      <span className="text-[10px] text-white-dim block mt-1.5 leading-snug">
+                        {m.detail}
+                      </span>
+                    )}
                   </div>
                 ))}
               </div>
             </div>
-          ) : (
-            /* Zapp Cidadão ON Civic Dispatch Simulation */
-            <div className="pt-6 space-y-6">
-              <h4 className="text-xs font-mono uppercase tracking-widest text-gold font-semibold">
-                Fluxo de Atendimento Cívico e Protocolo
-              </h4>
-              <div className="border border-[#262626] p-6 bg-[#121212] grid grid-cols-1 md:grid-cols-2 gap-8 text-xs font-mono">
-                <div className="space-y-3 border-r md:border-[#262626] pr-4">
-                  <p className="text-gold font-semibold uppercase">Triagem Automatizada</p>
-                  <p className="text-white-dim">Canal: WhatsApp Web.js (Porto Velho)</p>
-                  <p className="text-white-dim">Demanda: Manutenção e Obras Públicas</p>
-                  <p className="text-white-dim">Localização: Coordenadas GPS (-8.7619, -63.9039)</p>
-                  <p className="text-white">Status: Encaminhado à Secretaria Responsável</p>
-                </div>
-                <div className="space-y-3">
-                  <p className="text-gold font-semibold uppercase">Segurança & Regulação</p>
-                  <p className="text-white">Protocolo: ZC-BURA-171126-K89F</p>
-                  <p className="text-white-dim">Anonimização LGPD: 5569****1234</p>
-                  <p className="text-white-dim">Mapeamento: Geoprocessamento via Leaflet</p>
-                </div>
+
+            {/* Operational Challenge & Engineering Solution */}
+            <div className="space-y-4 pt-2 border-t border-[#262626]">
+              <div>
+                <h4 className="text-[11px] font-mono uppercase tracking-wider text-gold font-semibold mb-1">
+                  Desafio Operacional
+                </h4>
+                <p className="text-xs text-white-dim leading-relaxed">
+                  {activeProject.problem}
+                </p>
+              </div>
+              <div>
+                <h4 className="text-[11px] font-mono uppercase tracking-wider text-gold font-semibold mb-1">
+                  Solução de Engenharia
+                </h4>
+                <p className="text-xs text-white-dim leading-relaxed">
+                  {activeProject.solution}
+                </p>
               </div>
             </div>
-          )}
 
-          {/* Tech Stack List */}
-          <div className="pt-6 border-t border-[#262626] flex flex-wrap items-center gap-2">
-            <span className="text-xs font-mono text-white-dim mr-2">Tecnologias:</span>
-            {activeProject.techStack.map((t, idx) => (
-              <span
-                key={idx}
-                className="px-2.5 py-1 text-xs font-mono text-white-muted bg-[#121212] border border-[#262626]"
-              >
-                {t.name}
+            {/* Tech Stack Chips */}
+            <div className="pt-2">
+              <span className="text-[10px] font-mono text-white-dim block mb-2 uppercase tracking-wider">
+                Tecnologias Utilizadas
               </span>
-            ))}
+              <div className="flex flex-wrap gap-1.5">
+                {activeProject.techStack.map((t, idx) => (
+                  <span
+                    key={idx}
+                    className="px-2 py-0.5 text-[11px] font-mono text-white-dim bg-[#121212] border border-[#262626]"
+                  >
+                    {t.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Visual Showcase & Screenshots (lg:col-span-7) */}
+          <div className="lg:col-span-7 space-y-4">
+            {activeProject.images.length > 0 ? (
+              <div className="space-y-3">
+                {/* Visual Header & Image Switcher Tabs */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-[#262626]">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-gold font-semibold">
+                      Registro Visual em Produção
+                    </span>
+                    {activeProject.images.length > 1 && (
+                      <span className="text-[10px] font-mono text-white-dim">
+                        ({activeImageIndex + 1}/{activeProject.images.length})
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Multi-image navigation pills if project has > 1 screenshot */}
+                  {activeProject.images.length > 1 && (
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      {activeProject.images.map((img, imgIdx) => (
+                        <button
+                          key={imgIdx}
+                          onClick={() => setActiveImageIndex(imgIdx)}
+                          className={`px-2.5 py-1 text-[10px] font-mono transition-colors border ${
+                            activeImageIndex === imgIdx
+                              ? "bg-gold text-black font-semibold border-gold"
+                              : "bg-[#121212] text-white-dim border-[#262626] hover:text-white hover:border-[#404040]"
+                          }`}
+                        >
+                          Visão 0{imgIdx + 1}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Screenshot Display Box with Clean Aspect and Lightbox Trigger */}
+                <div
+                  onClick={() =>
+                    setLightbox({
+                      isOpen: true,
+                      src: currentImage.src,
+                      alt: currentImage.alt,
+                      caption: currentImage.caption,
+                      projectTitle: activeProject.title,
+                    })
+                  }
+                  className="relative border border-[#262626] bg-[#000000] p-2 cursor-pointer hover:border-gold transition-colors group flex items-center justify-center overflow-hidden"
+                  style={{ minHeight: "360px", maxHeight: "500px" }}
+                >
+                  <img
+                    src={currentImage.src}
+                    alt={currentImage.alt}
+                    className="w-full h-auto max-h-[460px] object-contain block mx-auto group-hover:scale-[1.01] transition-transform duration-200"
+                  />
+
+                  {/* Zoom indicator on hover */}
+                  <div className="absolute top-4 right-4 bg-black/80 border border-[#404040] px-2.5 py-1 text-[11px] font-mono text-white-dim opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 backdrop-blur-sm">
+                    <span>Inspecionar</span>
+                    <span className="text-gold">⤢</span>
+                  </div>
+                </div>
+
+                {/* Image Caption and Lightbox Action */}
+                <div className="flex items-start justify-between gap-4 p-3 bg-[#121212] border border-[#262626]">
+                  <p className="text-xs text-white-dim leading-relaxed">
+                    <span className="text-white font-medium block sm:inline mr-1">
+                      {currentImage.alt}:
+                    </span>
+                    {currentImage.caption}
+                  </p>
+                  <button
+                    onClick={() =>
+                      setLightbox({
+                        isOpen: true,
+                        src: currentImage.src,
+                        alt: currentImage.alt,
+                        caption: currentImage.caption,
+                        projectTitle: activeProject.title,
+                      })
+                    }
+                    className="shrink-0 text-[11px] font-mono text-gold hover:underline self-end sm:self-auto"
+                  >
+                    Ampliar ⤢
+                  </button>
+                </div>
+              </div>
+            ) : (
+              /* Zapp Cidadão ON Interactive Civic Dispatch Showcase */
+              <div className="space-y-3">
+                <div className="flex items-center justify-between pb-2 border-b border-[#262626]">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-gold font-semibold">
+                    Fluxo de Atendimento Cívico & Geoprocessamento
+                  </span>
+                  <span className="text-[10px] font-mono text-emerald-400">
+                    ● Canal Ativo
+                  </span>
+                </div>
+
+                <div className="border border-[#262626] bg-[#000000] p-6 font-mono text-xs space-y-5" style={{ minHeight: "380px" }}>
+                  <div className="border-b border-[#262626] pb-4 flex items-center justify-between text-white-dim">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                      <span className="text-white font-semibold">Zapp Cidadão ON • Motor de Zeladoria</span>
+                    </div>
+                    <span className="text-[11px] text-gold">Protocolo Unificado</span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-3 p-4 bg-[#121212] border border-[#262626]">
+                      <p className="text-gold font-semibold uppercase text-[11px]">Triagem & Georreferenciamento</p>
+                      <div className="space-y-1.5 text-white-dim text-[11px]">
+                        <p><span className="text-white">Canal:</span> WhatsApp Web.js (Porto Velho - RO)</p>
+                        <p><span className="text-white">Demanda:</span> Descarte irregular / Iluminação pública</p>
+                        <p><span className="text-white">GPS:</span> -8.7619° S, -63.9039° W (Bairro Embratel)</p>
+                        <p><span className="text-white">Despacho:</span> Roteirização via Leaflet Heatmap</p>
+                        <p><span className="text-emerald-400">Status:</span> Encaminhado à Secretaria Municipal</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3 p-4 bg-[#121212] border border-[#262626]">
+                      <p className="text-gold font-semibold uppercase text-[11px]">Segurança & Conformidade LGPD</p>
+                      <div className="space-y-1.5 text-white-dim text-[11px]">
+                        <p><span className="text-white">Protocolo:</span> <span className="text-gold font-bold">ZC-ZELA-2026-F91A</span></p>
+                        <p><span className="text-white">Anonimização:</span> 5569****1234 (Hashing SHA-256)</p>
+                        <p><span className="text-white">Persistência:</span> Firestore (Realtime) + Postgres</p>
+                        <p><span className="text-white">Acompanhamento:</span> Consulta direta pelo munícipe</p>
+                        <p><span className="text-emerald-400">Privacidade:</span> Zero dados expostos publicamente</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-3 bg-[#180407] border border-gold/40 text-[11px] text-white-muted leading-relaxed">
+                    <span className="text-gold font-semibold">Impacto Operacional:</span> Eliminação de triagens burocráticas com redução de ~60% no tempo de despacho de equipes municipais e total rastreabilidade do protocolo para o cidadão.
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Bottom Quick Switcher Navigation */}
+            <div className="flex items-center justify-between pt-4 border-t border-[#262626] font-mono text-xs">
+              <button
+                onClick={handlePrevProject}
+                className="text-white-dim hover:text-gold transition-colors flex items-center gap-1.5"
+              >
+                <span>←</span>
+                <span>Anterior: {PROJECTS_DATA[(currentIndex - 1 + PROJECTS_DATA.length) % PROJECTS_DATA.length].title}</span>
+              </button>
+              <button
+                onClick={handleNextProject}
+                className="text-white-dim hover:text-gold transition-colors flex items-center gap-1.5"
+              >
+                <span>Próximo: {PROJECTS_DATA[(currentIndex + 1) % PROJECTS_DATA.length].title}</span>
+                <span>→</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

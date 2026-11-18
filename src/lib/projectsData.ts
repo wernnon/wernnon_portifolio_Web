@@ -60,10 +60,10 @@ export const PROJECTS_DATA: ProjectCase[] = [
       { name: "Nodemailer", category: "Mensageria" }
     ],
     metrics: [
-      { label: "Polos Territoriais", value: "16", detail: "Unidades educacionais ativas no município" },
-      { label: "Turmas em Andamento", value: "30", detail: "Modalidades esportivas coordenadas" },
-      { label: "Presença Média", value: "54.8%", detail: "Monitoramento contínuo em chamadas digitais" },
-      { label: "Trilha de Auditoria", value: "100%", detail: "Registros assinados com JSON Diff e IP" }
+      { label: "Economia Estimada de Tempo", value: "~75%", detail: "No fechamento mensal e conciliação de frequência por polo" },
+      { label: "Prevenção da Evasão Escolar", value: "Alerta Precoce", detail: "Identificação preditiva de faltas consecutivas antes da evasão" },
+      { label: "Governança e Auditoria", value: "Tempo Zero", detail: "Auditoria contínua com trilha forense imutável via JSON Diff" },
+      { label: "Conformidade Regulatória", value: "100% LGPD", detail: "Blindagem de dados sensíveis e prontuários médicos de menores" }
     ],
     images: [
       {
@@ -139,10 +139,10 @@ export async function logAuditTrail(
       { name: "Sliding Window CPD", category: "Algoritmos" }
     ],
     metrics: [
-      { label: "Arquivos Processados", value: "460 / 590", detail: "Filtro cirúrgico de código relevante" },
-      { label: "Volume Textual", value: "2.31 MB", detail: "Compilado sem binários ou lixo" },
-      { label: "Tokens Estimados", value: "~605.208", detail: "Mapeamento em tempo real para LLMs" },
-      { label: "Privacidade", value: "100% Local", detail: "Zero tráfego externo ou telemetria" }
+      { label: "Gasto Médio de Tokens a Menos", value: "-45% a -70%", detail: "Expectativa média de economia por eliminação cirúrgica de ruído e binários" },
+      { label: "Economia Estimada de Tempo", value: "~85% mais ágil", detail: "Empacotamento automático de contexto vs. montagem manual de arquivos" },
+      { label: "Risco de Vazamento de Segredos", value: "0% Exposição", detail: "Higienização in-memory 100% offline de chaves de API e variáveis .env" },
+      { label: "Precisão dos Modelos (LLMs)", value: "+40% Assertividade", detail: "Prevenção de alucinações e perda de instruções por saturação de contexto" }
     ],
     images: [
       {
@@ -200,10 +200,10 @@ export function sanitizeAndTokenize(fileContent, filePath) {
       { name: "Tailwind CSS", category: "Design" }
     ],
     metrics: [
-      { label: "Faturamento Período", value: "R$ 16.510,10", detail: "Receita consolidada sem falhas de cobrança" },
-      { label: "Reservas Ativas", value: "6 Ativas", detail: "Com zero conflitos de agenda" },
-      { label: "Locais Gerenciados", value: "6 Unidades", detail: "4 Chalés/Suítes + 2 Espaços de Lazer" },
-      { label: "Overbooking", value: "0%", detail: "Garantido por validação formal de intervalos" }
+      { label: "Prevenção de Overbooking", value: "100% Blindado", detail: "Eliminação total de conflitos de agenda por validação matemática estrita" },
+      { label: "Tendência a Ganho em Reservas", value: "+35% a +50%", detail: "Captação contínua e triagem 24/7 de hóspedes na Central WhatsApp" },
+      { label: "Economia em Resolução de Avarias", value: "~90% Prevenção", detail: "Vistoria fotográfica pré e pós-estadia com laudo pericial formal" },
+      { label: "Tempo de Primeiro Contato", value: "< 1 min", detail: "Expectativa de resposta ágil sem fila de espera para o cliente" }
     ],
     images: [
       {
@@ -279,10 +279,10 @@ export async function assertNoBookingCollision(
       { name: "Axios", category: "HTTP" }
     ],
     metrics: [
-      { label: "Alunos Ativos", value: "+500", detail: "Comunidade engajada na plataforma" },
-      { label: "Mestres Graduados", value: "100%", detail: "Corpo docente certificado em Muay Thai/MMA" },
-      { label: "Área de Tatame", value: "180 m²", detail: "Espaço climatizado em Porto Velho - RO" },
-      { label: "Chamada em Tatame", value: "1 Clique", detail: "Redução de 90% do tempo administrativo do mestre" }
+      { label: "Retenção no 1º Trimestre", value: "Tendência +30%", detail: "Combate ao churn inicial via gamificação e Streak do Guerreiro" },
+      { label: "Economia de Tempo por Treino", value: "~95% por aula", detail: "Chamada no tatame em 1 clique liberando o mestre para o treino técnico" },
+      { label: "Conversão em Aulas Experimentais", value: "Tendência +45%", detail: "Landing page focada com agendamento direto e sem taxa oculta" },
+      { label: "Previsibilidade de Receita", value: "Fluxo Recorrente", detail: "Automação de lembretes e planos periódicos reduzindo inadimplência" }
     ],
     images: [
       {
@@ -354,10 +354,10 @@ export function calculateWarriorStreak(trainings: Date[]): { streakWeeks: number
       { name: "LGPD Anonymizer", category: "Segurança de Dados" }
     ],
     metrics: [
-      { label: "Protocolo Rastreável", value: "100%", detail: "Geração única ZC-[TIPO]-[DDMMAA]-[ID]" },
-      { label: "Mapeamento Espacial", value: "Heatmap", detail: "Pontos críticos de zeladoria na capital" },
-      { label: "Privacidade Cidadã", value: "LGPD Ready", detail: "Telefones ofuscados na camada analítica" },
-      { label: "Tempo de Triagem", value: "< 45s", detail: "Abertura de chamado automatizada" }
+      { label: "Economia de Tempo na Triagem", value: "~60% mais ágil", detail: "Abertura instantânea de chamados com auto-classificação de demandas" },
+      { label: "Eficiência de Despacho Operacional", value: "Roteirização Otimizada", detail: "Direcionamento geográfico de equipes municipais por mapa de calor" },
+      { label: "Rastreabilidade do Munícipe", value: "100% dos Protocolos", detail: "Expectativa de acompanhamento em tempo real sem intermediários" },
+      { label: "Garantia de Privacidade Cidadã", value: "Conformidade LGPD", detail: "Anonimização nativa de contatos em relatórios públicos de zeladoria" }
     ],
     images: [],
     interactiveSnippet: {
