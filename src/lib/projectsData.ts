@@ -118,7 +118,7 @@ export async function logAuditTrail(
     clientOrScope: "Estação de Trabalho Autônoma para Engenharia de Software",
     period: "2026 - Atual",
     status: "Alpha Estável",
-    repoUrl: "https://github.com/wernnon",
+    repoUrl: "https://dev-automation-kit.github.io/dev-automation-kit-web/",
     summary:
       "Estação de trabalho desktop desenvolvida para higienização estrita de bases de código e compilação de pacotes de contexto otimizados para Grandes Modelos de Linguagem (Claude 3.5, Gemini 1.5/2.0, GPT-4o, Cursor), operando cem por cento offline sem vazamento de dados confidenciais.",
     problem:
@@ -256,7 +256,7 @@ export async function assertNoBookingCollision(
     subtitle: "Ecossistema Integrado de Gestão Marcial e Alta Retenção",
     category: "Gestão Esportiva",
     clientOrScope: "Centro de Treinamento e Academia de Artes Marciais",
-    period: "2024 - 2026",
+    period: "2026 - Atual",
     status: "Produção Ativa",
     summary:
       "Ecossistema completo para academias de combate combinando landing page de alta conversão, controle de grade de horários com filtros inteligentes de turno, chamada em 1 clique na beira do tatame e portal mobile-first gamificado com Streak do Guerreiro.",

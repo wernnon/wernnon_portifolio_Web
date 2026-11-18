@@ -165,7 +165,7 @@ export function CaseStudies() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-mono text-white-dim hover:text-white bg-[#121212] hover:border-gold transition-colors border border-[#262626]"
                     >
-                      <span>Repositório</span>
+                      <span>Página Oficial</span>
                       <span className="text-sm leading-none">↗</span>
                     </a>
                   )}
