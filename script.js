@@ -637,48 +637,48 @@ function renderDeveloperLabTree() {
     const isChecked = selectedTreeIds.has(node.id);
     return `
       <div class="space-y-1">
-        <div class="flex items-center justify-between py-1 px-2 hover:bg-[#121212]">
+        <div class="flex items-start sm:items-center justify-between py-1.5 px-2 hover:bg-[#121212] gap-2 rounded-none transition-colors">
           <button
             type="button"
             onclick="toggleTreeSelection('${node.id}', ${Boolean(node.children)})"
-            class="flex items-center gap-3 text-left"
+            class="flex items-start sm:items-center gap-2.5 text-left min-w-0 flex-1 group"
           >
-            <span class="w-3.5 h-3.5 border flex items-center justify-center text-[10px] ${
-              isChecked ? "border-gold bg-gold text-black font-bold" : "border-[#404040]"
+            <span class="w-3.5 h-3.5 border flex items-center justify-center text-[10px] shrink-0 mt-0.5 sm:mt-0 ${
+              isChecked ? "border-gold bg-gold text-black font-bold" : "border-[#404040] group-hover:border-gold"
             }">
               ${isChecked ? "✕" : ""}
             </span>
-            <span class="${node.isFolder ? "font-semibold text-white" : "text-white-dim"}">
+            <span class="break-words text-xs leading-snug ${node.isFolder ? "font-semibold text-white" : "text-white-dim"}">
               ${node.name}
             </span>
           </button>
-          <div class="flex items-center gap-4 text-white-dim text-[11px]">
-            <span>${node.size}</span>
-            <span class="text-gold">${node.tokens}</span>
+          <div class="flex flex-col sm:flex-row items-end sm:items-center gap-0.5 sm:gap-4 text-white-dim text-[10px] sm:text-[11px] shrink-0 text-right whitespace-nowrap pl-2">
+            <span class="whitespace-nowrap text-white-dim/80">${node.size}</span>
+            <span class="whitespace-nowrap text-gold">${node.tokens}</span>
           </div>
         </div>
 
         ${node.children ? `
-          <div class="pl-6 border-l border-[#262626] ml-3 space-y-1">
+          <div class="pl-3 sm:pl-6 border-l border-[#262626] ml-1.5 sm:ml-3 space-y-1">
             ${node.children.map((child) => {
               const isChildChecked = selectedTreeIds.has(child.id);
               return `
-                <div class="flex items-center justify-between py-1 px-2 hover:bg-[#121212]">
+                <div class="flex items-start sm:items-center justify-between py-1.5 px-2 hover:bg-[#121212] gap-2 rounded-none transition-colors">
                   <button
                     type="button"
                     onclick="toggleTreeSelection('${child.id}', false)"
-                    class="flex items-center gap-3 text-left text-white-dim hover:text-white"
+                    class="flex items-start sm:items-center gap-2.5 text-left min-w-0 flex-1 text-white-dim hover:text-white group"
                   >
-                    <span class="w-3.5 h-3.5 border flex items-center justify-center text-[10px] ${
-                      isChildChecked ? "border-gold bg-gold text-black font-bold" : "border-[#404040]"
+                    <span class="w-3.5 h-3.5 border flex items-center justify-center text-[10px] shrink-0 mt-0.5 sm:mt-0 ${
+                      isChildChecked ? "border-gold bg-gold text-black font-bold" : "border-[#404040] group-hover:border-gold"
                     }">
                       ${isChildChecked ? "✕" : ""}
                     </span>
-                    <span>${child.name}</span>
+                    <span class="break-words text-xs leading-snug">${child.name}</span>
                   </button>
-                  <div class="flex items-center gap-4 text-white-dim text-[11px]">
-                    <span>${child.size}</span>
-                    <span class="text-gold">${child.tokens}</span>
+                  <div class="flex flex-col sm:flex-row items-end sm:items-center gap-0.5 sm:gap-4 text-white-dim text-[10px] sm:text-[11px] shrink-0 text-right whitespace-nowrap pl-2">
+                    <span class="whitespace-nowrap text-white-dim/80">${child.size}</span>
+                    <span class="whitespace-nowrap text-gold">${child.tokens}</span>
                   </div>
                 </div>
               `;

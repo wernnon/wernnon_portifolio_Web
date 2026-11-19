@@ -100,17 +100,37 @@
       <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/25 pointer-events-none"></div>
 
       <div class="relative z-10 max-w-6xl mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <!-- Main Editorial Text (8 cols) -->
-          <div class="lg:col-span-8 space-y-8 relative z-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-x-16 lg:gap-y-10 items-start">
+          <!-- Row 1, Left: Eyebrow + Main Heading (lg:col-span-8 lg:row-start-1) -->
+          <div class="lg:col-span-8 lg:row-start-1 space-y-4">
             <p class="text-xs font-mono uppercase tracking-widest text-gold">
               01 / Apresentação e Diretriz
             </p>
 
-            <h1 class="relative z-20 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
               Engenharia de software, arquitetura de sistemas e produtos digitais.
             </h1>
+          </div>
 
+          <!-- Row 1, Right: Logo & Brand Name (lg:col-span-4 lg:row-start-1) -->
+          <div class="lg:col-span-4 lg:row-start-1 flex flex-col items-center justify-center text-center self-center order-3 lg:order-none pt-4 lg:pt-0">
+            <div class="w-full max-w-[240px] mb-3">
+              <img
+                src="assets/images/welyz-signature-cropped.png"
+                alt="Assinatura Autoral Wernnon Ruiz"
+                class="w-full h-auto object-contain mx-auto filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]"
+              >
+            </div>
+            <p class="text-xs font-mono uppercase tracking-widest text-gold font-semibold">
+              Wernnon Ruiz
+            </p>
+            <p class="text-xs text-white/80 mt-1 font-sans">
+              Marca Autoral • Desenvolvedor de Software
+            </p>
+          </div>
+
+          <!-- Row 2, Left: Subtitle & Meta Info (lg:col-span-8 lg:row-start-2) -->
+          <div class="lg:col-span-8 lg:row-start-2 space-y-8 order-2 lg:order-none">
             <p class="text-lg text-white leading-relaxed max-w-2xl font-normal drop-shadow-sm font-sans">
               Meu nome é Wernnon Ruiz. Atuo na concepção, arquitetura e entrega de sistemas
               computacionais de ponta a ponta. Minha prática abrange desde plataformas de gestão
@@ -134,25 +154,8 @@
             </div>
           </div>
 
-          <!-- Right Column: Logo & Text directly over the pattern (4 cols) -->
-          <div class="lg:col-span-4 flex flex-col justify-between h-full space-y-8 relative z-10">
-            <div class="p-4 sm:p-6 flex flex-col items-center justify-center text-center">
-              <div class="hero-logo-sketch w-full max-w-[400px] mb-4">
-                <img
-                  src="assets/images/welyz-signature-cropped.png"
-                  alt="Assinatura Autoral Wernnon Ruiz"
-                  class="w-full h-auto object-contain mx-auto filter drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]"
-                >
-              </div>
-              <p class="text-xs font-mono uppercase tracking-widest text-gold font-semibold">
-                Wernnon Ruiz
-              </p>
-              <p class="text-xs text-white/80 mt-1 font-sans">
-                Marca Autoral • Desenvolvedor de Software
-              </p>
-            </div>
-
-            <!-- Engineering Standard Note -->
+          <!-- Row 2, Right: Engineering Standard Note (lg:col-span-4 lg:row-start-2) - Alinhado com o subtítulo -->
+          <div class="lg:col-span-4 lg:row-start-2 order-4 lg:order-none">
             <div class="border border-[#333333] p-6 bg-black/80 backdrop-blur-sm text-xs text-white-dim leading-relaxed space-y-2">
               <p class="text-white font-medium text-xs font-mono uppercase tracking-wider">
                 Critério de Engenharia
@@ -522,7 +525,7 @@
         <!-- Workstation Frame -->
         <div class="border border-[#262626] bg-[#121212]">
           <!-- Header Bar -->
-          <div class="border-b border-[#262626] px-6 py-4 flex flex-wrap items-center justify-between gap-4 bg-black">
+          <div class="border-b border-[#262626] px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 bg-black">
             <div class="flex items-center gap-3">
               <span class="w-2.5 h-2.5 bg-gold rounded-full"></span>
               <span class="text-xs font-mono font-semibold text-white">
@@ -534,40 +537,40 @@
             </span>
           </div>
 
-          <div class="p-6 sm:p-8 space-y-8">
+          <div class="p-3.5 sm:p-8 space-y-6 sm:space-y-8">
             <!-- Counters Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 border-b border-[#262626] pb-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 border-b border-[#262626] pb-6 sm:pb-8">
               <div>
-                <span class="text-xs font-mono text-white-dim block uppercase">Arquivos Selecionados</span>
-                <span id="lab-counter-files" class="text-2xl font-mono font-bold text-white mt-1 block">
+                <span class="text-[10px] sm:text-xs font-mono text-white-dim block uppercase">Arquivos Selecionados</span>
+                <span id="lab-counter-files" class="text-xl sm:text-2xl font-mono font-bold text-white mt-1 block">
                   11 <span class="text-xs font-normal text-white-dim">/ 590</span>
                 </span>
               </div>
               <div>
-                <span class="text-xs font-mono text-white-dim block uppercase">Volume de Texto</span>
-                <span id="lab-counter-volume" class="text-2xl font-mono font-bold text-white mt-1 block">
+                <span class="text-[10px] sm:text-xs font-mono text-white-dim block uppercase">Volume de Texto</span>
+                <span id="lab-counter-volume" class="text-xl sm:text-2xl font-mono font-bold text-white mt-1 block">
                   4.35 MB
                 </span>
               </div>
               <div>
-                <span class="text-xs font-mono text-white-dim block uppercase">Tokens Estimados</span>
-                <span id="lab-counter-tokens" class="text-2xl font-mono font-bold text-gold mt-1 block">
+                <span class="text-[10px] sm:text-xs font-mono text-white-dim block uppercase">Tokens Estimados</span>
+                <span id="lab-counter-tokens" class="text-xl sm:text-2xl font-mono font-bold text-gold mt-1 block">
                   ~531.018
                 </span>
               </div>
               <div>
-                <span class="text-xs font-mono text-white-dim block uppercase">Isolamento de Segredos</span>
-                <span class="text-2xl font-mono font-bold text-white mt-1 block">
+                <span class="text-[10px] sm:text-xs font-mono text-white-dim block uppercase">Isolamento de Segredos</span>
+                <span class="text-xl sm:text-2xl font-mono font-bold text-white mt-1 block">
                   100% Local
                 </span>
               </div>
             </div>
 
             <!-- Controls -->
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-              <div class="flex items-center gap-3 text-xs font-mono text-white-dim">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-3 text-xs font-mono text-white-dim">
                 <span>Modo de empacotamento:</span>
-                <span class="px-3 py-1.5 bg-black border border-[#262626] text-white">
+                <span class="px-3 py-1.5 bg-black border border-[#262626] text-white text-center sm:text-left">
                   Dividir por Módulos (--by-folder)
                 </span>
               </div>
@@ -575,14 +578,14 @@
               <button
                 type="button"
                 id="btn-generate-context"
-                class="px-6 py-2.5 bg-gold hover:bg-gold-hover text-black text-xs font-mono uppercase font-semibold transition-colors disabled:opacity-50"
+                class="w-full sm:w-auto px-6 py-2.5 bg-gold hover:bg-gold-hover text-black text-xs font-mono uppercase font-semibold transition-colors disabled:opacity-50"
               >
                 Gerar Contexto
               </button>
             </div>
 
             <!-- Success Status Box -->
-            <div id="lab-status-box" class="p-4 border border-gold/40 bg-[#180407] text-xs font-mono flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div id="lab-status-box" class="p-3.5 sm:p-4 border border-gold/40 bg-[#180407] text-xs font-mono flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <span class="text-white">
                 Contexto compilado com sucesso. Salvo em: <span class="text-gold">gerados/construindo-campeoes/</span>
               </span>
@@ -590,13 +593,13 @@
             </div>
 
             <!-- Directory Selection Tree -->
-            <div class="border border-[#262626] bg-black p-4 font-mono text-xs">
-              <div class="pb-3 border-b border-[#262626] mb-3 flex items-center justify-between text-white-dim">
-                <span>Árvore de Diretórios</span>
-                <span id="lab-tree-marked-count">11 itens marcados</span>
+            <div class="border border-[#262626] bg-black p-3 sm:p-4 font-mono text-xs">
+              <div class="pb-2.5 sm:pb-3 border-b border-[#262626] mb-2.5 sm:mb-3 flex items-center justify-between text-white-dim">
+                <span class="font-semibold text-white">Árvore de Diretórios</span>
+                <span id="lab-tree-marked-count" class="text-[11px] sm:text-xs">11 itens marcados</span>
               </div>
 
-              <div id="lab-tree-container" class="space-y-2">
+              <div id="lab-tree-container" class="space-y-1.5 sm:space-y-2">
                 <!-- Injetado dinamicamente via script.js -->
               </div>
             </div>
