@@ -70,41 +70,25 @@ E acesse `http://localhost:3000`.
 
 ## 🛠️ Stack Tecnológica
 
-- **Framework:** Next.js 14 (App Router)
-- **Linguagem:** TypeScript 5 (Strict Mode)
-- **Estilização:** Tailwind CSS com Design Tokens customizados (Burgundy, Sand Gold, Obsidian, Crimson, Emerald)
-- **Ícones:** Lucide React
-- **Animações:** CSS Transitions & Framer Motion ready
+- **Padrão:** Web Estática Pura (HTML5 Semântico, CSS3 e JavaScript Vanilla ES6+)
+- **Estilização:** CSS compilado com Design Tokens suíços (Preto `#0A0A0A`, Bordô `#2A080C`, Ouro `#E4B276`, Branco `#FFFFFF`)
+- **Autonomia:** Zero dependências de Node.js em produção
+- **Formulário:** Disparo direto via FormSubmit AJAX com fallback resiliente para cliente de e-mail e WhatsApp
+- **Deploy:** GitHub Actions oficial com entrega automatizada no GitHub Pages
 
 ---
 
 ## 🚀 Como Executar Localmente
 
-### Pré-requisitos
-- Node.js 18+ (recomendado Node.js 20+ ou 22+)
-- npm ou yarn
+### Opção 1: Abertura Direta
+Abra o arquivo `index.html` com dois cliques em qualquer navegador web moderno.
 
-### Instalação
+### Opção 2: Servidor Local Leve (Recomendado)
+Para testar como em um servidor web real:
 ```bash
-# Instalar dependências
-npm install
-```
-
-### Desenvolvimento
-```bash
-# Iniciar servidor de desenvolvimento na porta 3000
-npm run dev
+python3 -m http.server 3000
 ```
 Acesse [http://localhost:3000](http://localhost:3000) no seu navegador.
-
-### Build de Produção
-```bash
-# Gerar bundle otimizado de produção
-npm run build
-
-# Executar build de produção
-npm run start
-```
 
 ---
 
