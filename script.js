@@ -16,7 +16,6 @@ const projectsDatabase = {
     challenge: "Substituir processos em papel por uma plataforma segura (LGPD), auditável e com interface intuitiva para instrutores e gestores municipais.",
     impact: "Mais de 1.200 alunos cadastrados e redução de 90% no tempo de emissão de relatórios.",
     stack: ["TypeScript", "Node.js", "Prisma ORM", "PostgreSQL", "React", "Docker"],
-    githubUrl: "https://github.com/wernnon",
     actionUrl: "https://wa.me/5569992473397?text=Ol%C3%A1%20Wernnon,%20vi%20o%20projeto%20Construindo%20Campe%C3%B5es"
   },
   "dev-automation-kit": {
@@ -27,7 +26,7 @@ const projectsDatabase = {
     challenge: "Alimentar LLMs com contextos de código gigantescos sem estourar a janela de contexto, preservando dependências arquiteturais.",
     impact: "Otimização média de 68% no uso de tokens com preservação integral de interfaces e tipos TypeScript.",
     stack: ["Node.js", "TypeScript", "Tree-Sitter", "AST Parser", "Bash"],
-    githubUrl: "https://github.com/wernnon",
+    githubUrl: "https://dev-automation-kit.github.io/dev-automation-kit-web/",
     actionUrl: "https://wa.me/5569992473397?text=Ol%C3%A1%20Wernnon,%20vi%20o%20Dev%20Automation%20Kit"
   },
   "wlw-pro": {
@@ -38,7 +37,6 @@ const projectsDatabase = {
     challenge: "Garantir agilidade no check-in/check-out e atendimento automático aos hóspedes sem perdas operacionais.",
     impact: "Aumento de 40% nas reservas diretas sem taxas de intermediários.",
     stack: ["React", "Next.js", "Tailwind CSS", "REST APIs", "WhatsApp Cloud API"],
-    githubUrl: "https://github.com/wernnon",
     actionUrl: "https://wa.me/5569992473397?text=Ol%C3%A1%20Wernnon,%20vi%20o%20WLW%20PRO"
   },
   "boru-combate": {
@@ -49,7 +47,6 @@ const projectsDatabase = {
     challenge: "Criar uma identidade visual marcante de tatame/combate mantendo usabilidade ágil para alunos e professores no celular.",
     impact: "Taxa de conversão de alunos novos elevada em 35% e facilidade de consulta de horários.",
     stack: ["JavaScript ES6+", "HTML5 Semântico", "CSS3 Moderno", "PWA"],
-    githubUrl: "https://github.com/wernnon",
     actionUrl: "https://wa.me/5569992473397?text=Ol%C3%A1%20Wernnon,%20vi%20o%20Boru%20Combate"
   },
   "zapp-cidadao": {
@@ -60,7 +57,6 @@ const projectsDatabase = {
     challenge: "Triagem automática de mensagens e geração instantânea de ordens de serviço georreferenciadas para as equipes de campo.",
     impact: "Mais de 15.000 chamados processados com protocolo instantâneo ao morador.",
     stack: ["Node.js", "WhatsApp Business API", "PostgreSQL", "Geolocalização"],
-    githubUrl: "https://github.com/wernnon",
     actionUrl: "https://wa.me/5569992473397?text=Ol%C3%A1%20Wernnon,%20vi%20o%20Zapp%20Cidadao"
   }
 };
@@ -105,7 +101,7 @@ const sectionsData = {
           <span class="panel-tag">VALORES</span>
         </div>
         <p class="panel-text">
-          "Software bom é software em produção que resolve a vida das pessoas sem fricção. Design autoral não é firula estética — é autenticidade, clareza e respeito ao usuário."
+          "Software precisa ser solução e transformação, profissional e social. Design autoral é autenticidade e identidade, mostrar quem é tão importante quanto o que faz."
         </p>
       </div>
     `
@@ -376,7 +372,7 @@ function renderProjectDetail(index, animate = false) {
     if (actionsEl) {
       actionsEl.innerHTML = `
         <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="action-btn btn-primary">
-          Ver Código no GitHub
+          Ver Página do Projeto
         </a>
         <a href="${project.actionUrl}" target="_blank" rel="noopener noreferrer" class="action-btn btn-outline">
           Conversar no WhatsApp
