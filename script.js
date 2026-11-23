@@ -370,10 +370,15 @@ function renderProjectDetail(index, animate = false) {
     // Ações de rodapé do projeto
     const actionsEl = document.getElementById("pd-actions");
     if (actionsEl) {
+      const hasGithubUrl = Boolean(project.githubUrl && project.githubUrl.trim());
+      const githubBtn = hasGithubUrl
+        ? `<a id="githubrul" href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="action-btn btn-primary">
+            Ver Página do Projeto
+          </a>`
+        : "";
+
       actionsEl.innerHTML = `
-        <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="action-btn btn-primary">
-          Ver Página do Projeto
-        </a>
+        ${githubBtn}
         <a href="${project.actionUrl}" target="_blank" rel="noopener noreferrer" class="action-btn btn-outline">
           Conversar no WhatsApp
         </a>
@@ -591,26 +596,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 7. Suporte a Swipe no Mobile (Arrasto horizontal com touch)
+  // 7. Suporte a Swipe no Mobile (Arrasto horizontal com touch discriminando scroll vertical)
   let touchStartX = 0;
+  let touchStartY = 0;
   let touchEndX = 0;
+  let touchEndY = 0;
 
   window.addEventListener("touchstart", (e) => {
     touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
   }, { passive: true });
 
   window.addEventListener("touchend", (e) => {
     touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
     handleGesture();
   }, { passive: true });
 
   function handleGesture() {
     const isProjectMode = stage && stage.classList.contains("project-mode");
-    const diff = touchEndX - touchStartX;
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
 
-    if (Math.abs(diff) > 50) {
+    // Apenas ativa se o gesto for predominantemente horizontal (evita conflito com rolagem vertical)
+    if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.35) {
       if (isProjectMode) {
-        if (diff < 0) {
+        if (diffX < 0) {
           nextProject();
         } else {
           prevProject();
@@ -619,7 +630,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const idx = tabsList.indexOf(currentTab);
-      if (diff < 0) {
+      if (diffX < 0) {
         // Swipe para esquerda -> próxima aba
         const nextIdx = (idx + 1) % tabsList.length;
         switchTab(tabsList[nextIdx]);
